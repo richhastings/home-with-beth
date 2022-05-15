@@ -5,6 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      display: ['Arsenica', 'serif'],
+      body: ['Lato'],
+    },
+    colors: {
+      champagne: '#F7E7CE',
+    },
   },
   plugins: [],
 }
