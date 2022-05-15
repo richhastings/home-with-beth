@@ -32,7 +32,7 @@ const Post = ({post}) => {
     <article>
       <h1>{post?.slug?.current}</h1>
       <p>{title}</p>
-      <div>{categories.map(category => category)}</div>
+      <div>{categories && categories.length && categories.map(category => category)}</div>
       <PortableText
         value={body}
         components={ptComponents}
@@ -54,7 +54,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({params: {slug}})),
-    fallback: false,
+    fallback: true,
   }
 }
 
