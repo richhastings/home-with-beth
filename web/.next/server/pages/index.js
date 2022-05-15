@@ -5,25 +5,16 @@ exports.id = 405;
 exports.ids = [405];
 exports.modules = {
 
-/***/ 481:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 131:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ client)
-});
-
-;// CONCATENATED MODULE: external "@sanity/client"
-const client_namespaceObject = require("@sanity/client");
-var client_default = /*#__PURE__*/__webpack_require__.n(client_namespaceObject);
-;// CONCATENATED MODULE: ./client.js
-
-/* harmony default export */ const client = (client_default()({
+const sanityClient = __webpack_require__(97);
+module.exports = sanityClient({
     projectId: "6mrehaoy",
     dataset: "production",
     useCdn: true // `false` if you want to ensure fresh data
-}));
+});
 
 
 /***/ }),
@@ -42,7 +33,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var groq__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(360);
 /* harmony import */ var groq__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(groq__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(481);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(131);
+/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_client__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -80,7 +72,7 @@ const Index = ({ posts  })=>{
     });
 };
 async function getStaticProps() {
-    const posts = await _client__WEBPACK_IMPORTED_MODULE_3__/* ["default"].fetch */ .Z.fetch((groq__WEBPACK_IMPORTED_MODULE_2___default())`
+    const posts = await _client__WEBPACK_IMPORTED_MODULE_3___default().fetch((groq__WEBPACK_IMPORTED_MODULE_2___default())`
       *[_type == "post"] | order(publishedAt desc)
     `);
     return {
@@ -91,6 +83,13 @@ async function getStaticProps() {
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
 
+
+/***/ }),
+
+/***/ 97:
+/***/ ((module) => {
+
+module.exports = require("@sanity/client");
 
 /***/ }),
 

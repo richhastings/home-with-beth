@@ -27,8 +27,6 @@ const ptComponents = {
 const Post = ({post}) => {
   const {title = 'Missing title', categories, body = []} = post
 
-  if (!post) return
-
   return (
     <article>
       <h1>{post?.slug?.current}</h1>
@@ -55,7 +53,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({params: {slug}})),
-    fallback: true,
+    fallback: false,
   }
 }
 
