@@ -25,7 +25,9 @@ const ptComponents = {
 }
 
 const Post = ({post}) => {
-  const {title, categories, body = []} = post
+  const {title = 'Missing title', categories, body = []} = post
+
+  if (!post) return
 
   return (
     <article>
