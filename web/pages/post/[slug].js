@@ -25,7 +25,7 @@ const ptComponents = {
 }
 
 const Post = ({post}) => {
-  const {title = 'Missing title', categories, body = []} = post
+  const {title = 'Missing title', categories = [], body = []} = post
 
   return (
     <article>
@@ -53,7 +53,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({params: {slug}})),
-    fallback: false,
+    fallback: true,
   }
 }
 
@@ -61,6 +61,7 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params
   const post = await client.fetch(query, { slug })
+  console.log(22222, post)
   return {
     props: {
       post
