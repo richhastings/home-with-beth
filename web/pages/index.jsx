@@ -2,11 +2,14 @@ import Link from 'next/link'
 import groq from 'groq'
 import client from '../client'
 
-const Index = ({posts}) => {
-    return (
-      <div style={{display: 'flex', justifyContent:'center', alignItems: 'center', minHeight: 'calc(100vh - 16px)'}}>
-        <h1 style={{fontFamily: 'sans-serif', textAlign: 'center'}}>Home with Beth - Coming Summer 2022</h1>
-        {/* {posts.length > 0 && posts.map(
+const Index = ({ posts }) => {
+  return (
+    <div className="bg-champagne flex min-h-screen flex-wrap items-center justify-center">
+      <div className="text-center">
+        <h1 className="w-full font-display text-8xl">Home with Beth</h1>
+        <p className="font-body">Coming Summer 2022</p>
+      </div>
+      {/* {posts.length > 0 && posts.map(
           ({ _id, title = '', slug = '', publishedAt = '' }) =>
             slug && (
               <li key={_id}>
@@ -16,19 +19,19 @@ const Index = ({posts}) => {
               </li>
             )
         )} */}
-      </div>
-    )
+    </div>
+  )
 }
 
 export async function getStaticProps() {
-    const posts = await client.fetch(groq`
+  const posts = await client.fetch(groq`
       *[_type == "post"] | order(publishedAt desc)
     `)
-    return {
-      props: {
-        posts
-      }
-    }
+  return {
+    props: {
+      posts,
+    },
+  }
 }
 
 export default Index
