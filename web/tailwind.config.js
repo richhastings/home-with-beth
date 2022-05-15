@@ -1,13 +1,13 @@
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './src/component/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {},
     fontFamily: {
       display: ['Arsenica', 'serif'],
-      body: ['Lato'],
+      body: ['Nunito'],
     },
     colors: {
       champagne: '#F7E7CE',
