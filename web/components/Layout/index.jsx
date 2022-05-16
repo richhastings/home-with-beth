@@ -2,7 +2,7 @@ import Navigation from '../Navigation'
 
 const Layout = ({ navItems, children }) => (
   <>
-    <Navigation items={navItems} />
+    {/* <Navigation items={navItems} /> */}
     {children}
   </>
 )
