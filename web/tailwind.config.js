@@ -11,6 +11,7 @@ module.exports = {
     },
     colors: {
       champagne: '#F7E7CE',
+      white: '#FFF',
     },
   },
   plugins: [],

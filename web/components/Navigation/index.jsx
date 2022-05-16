@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
+import client from '../../client'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -11,16 +12,15 @@ const navigation = [
 ]
 
 const Navigation = ({ items }) => {
-  console.log(11111, items)
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="fixed left-0 right-0 bg-white shadow">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="text-gray-400 hover:text-white hover:bg-gray-700 focus:ring-white inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset">
+                <Disclosure.Button className="text-gray-400 hover:bg-gray-700 inline-flex items-center justify-center rounded-md p-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -50,7 +50,7 @@ const Navigation = ({ items }) => {
                         <a
                           key={item.label}
                           href={item.url}
-                          className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                          className="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium hover:text-white"
                           // aria-current={item.current ? 'page' : undefined}
                         >
                           {item.label}
@@ -62,7 +62,7 @@ const Navigation = ({ items }) => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="bg-gray-800 text-gray-400 hover:text-white focus:ring-offset-gray-800 focus:ring-white rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                  className="bg-gray-800 text-gray-400 focus:ring-offset-gray-800 rounded-full p-1 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -71,7 +71,7 @@ const Navigation = ({ items }) => {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="bg-gray-800 focus:ring-offset-gray-800 focus:ring-white flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-offset-2">
+                    <Menu.Button className="bg-gray-800 focus:ring-offset-gray-800 flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -89,7 +89,7 @@ const Navigation = ({ items }) => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="bg-white ring-black absolute right-0 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="ring-black absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -160,17 +160,6 @@ const Navigation = ({ items }) => {
       )}
     </Disclosure>
   )
-}
-
-export async function getStaticProps() {
-  const items = await client.fetch(groq`
-      *[_type == "navigation"]
-    `)
-  return {
-    props: {
-      items,
-    },
-  }
 }
 
 export default Navigation
