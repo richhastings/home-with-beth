@@ -1,13 +1,17 @@
 @font-face {
   font-family: 'Arsenica';
-  src: url('/font/Arsenica.ttf') format('truetype');
+  src: url('/font/ArsenicaTrial-Extrabold.woff2') format('woff2'),
+    url('/font/ArsenicaTrial-Extrabold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
-body, #__next {
-  min-height: 100vh
+body,
+#__next {
+  min-height: 100vh;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
