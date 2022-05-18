@@ -1,2 +1,7 @@
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/studio"
+  to = "https://homewithbeth.sanity.studio"
+  status = 301
