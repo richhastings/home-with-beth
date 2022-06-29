@@ -1,19 +1,15 @@
-import App from 'next/app'
 import '../styles/global.css'
-import client from '../client'
-import groq from 'groq'
+
+import { ApolloProvider } from '@apollo/client'
+import { useApollo } from '../data/apollo'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-
-MyApp.getInitialProps = async (appContext) => {
-  // const appProps = await App.getInitialProps(appContext)
-  const items = await client.fetch(groq`
-      *[_type == "navigation"]
-    `)
-
-  return { banana: items }
+  const apolloClient = useApollo(pageProps)
+  return (
+    <ApolloProvider client={apolloClient}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  )
 }
 
 export default MyApp

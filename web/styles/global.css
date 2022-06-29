@@ -7,11 +7,11 @@
   font-display: swap;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body,
 #__next {
   min-height: 100vh;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
