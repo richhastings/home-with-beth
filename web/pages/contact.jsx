@@ -21,11 +21,12 @@ const Index = ({ data }) => {
           </div>
           <div className="mt-12">
             <form
-              action="#"
+              name="contact"
               method="POST"
               className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
               data-netlify="true"
             >
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label
                   htmlFor="first-name"
