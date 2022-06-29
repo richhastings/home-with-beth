@@ -21,6 +21,7 @@ const Index = ({ data }) => {
           </div>
           <div className="mt-12">
             <form
+              action="pages/thank-you"
               name="contact"
               method="POST"
               className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
@@ -137,7 +138,7 @@ const Index = ({ data }) => {
                       checked={agreed}
                       onChange={setAgreed}
                       className={classNames(
-                        agreed ? 'bg-indigo-600' : 'bg-gray-200',
+                        agreed ? 'bg-green' : 'bg-[#ddd]',
                         'border-transparent focus:ring-indigo-500 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2'
                       )}
                     >
@@ -175,7 +176,7 @@ const Index = ({ data }) => {
               <div className="sm:col-span-2">
                 <button
                   type="submit"
-                  className="border-transparent bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 inline-flex w-full items-center justify-center rounded-md border px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+                  className="border-transparent hover:bg-indigo-700 focus:ring-indigo-500 inline-flex w-full items-center justify-center rounded-md border bg-green px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
                 >
                   Let's talk
                 </button>
