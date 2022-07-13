@@ -13,6 +13,8 @@ const CoverGrid = ({ items, columns = '3' }) => {
     3: 'sm:grid-cols-2 lg:grid-cols-3',
   }
 
+  // trigger deploy
+
   return (
     <div className={`grid gap-5 ${columnsClassMap[columns]}`}>
       {items.map((item) => (
