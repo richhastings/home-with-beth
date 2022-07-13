@@ -3,12 +3,11 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import Split from '../components/Split'
-import HypeStrip from '../components/HypeStrip'
 import { indexPageQuery } from '../data/queries'
+import { PortableText } from '@portabletext/react'
 
 const Index = ({ data }) => {
-  const { allPost, allProject } = data
-  console.log(22222, allProject)
+  const { allPost, allProject, allLockup } = data
   return (
     <Layout
       hero={
@@ -20,19 +19,12 @@ const Index = ({ data }) => {
       }
       overlayedNavigation
     >
-      <Split heading="Services" ctaUrl="/services" ctaText="View all services">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-          magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-          alias eos accusantium vel quia officia ipsa nemo exercitationem
-          asperiores!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-          magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-          alias eos accusantium vel quia officia ipsa nemo exercitationem
-          asperiores!
-        </p>
+      <Split
+        heading={allLockup[0].title}
+        ctaUrl="/services"
+        ctaText="View all services"
+      >
+        <PortableText value={allLockup[0].descriptionRaw} />
       </Split>
       <hr />
       <Grid
@@ -59,6 +51,7 @@ export async function getStaticProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: indexPageQuery,
+    variables: { key: { eq: 'home' } },
   })
 
   const documentProps = addApolloState(apolloClient, {

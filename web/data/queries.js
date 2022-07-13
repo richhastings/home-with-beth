@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const indexPageQuery = gql`
-  query indexPageQuery {
+  query indexPageQueryquery($key: StringFilter) {
     allPost(limit: 3, sort: { _createdAt: ASC }) {
       _createdAt
       title
@@ -25,6 +25,10 @@ export const indexPageQuery = gql`
       slug {
         current
       }
+    }
+    allLockup(where: { key: $key }) {
+      title
+      descriptionRaw
     }
   }
 `
@@ -114,22 +118,44 @@ export const allPostsQuery = gql`
   }
 `
 
-export const aboutPageQuery = gql`
-  query aboutPageQuery {
-    allPost {
-      slug {
-        current
+export const allServicesQuery = gql`
+  query allServiceQuery($key: StringFilter) {
+    allService {
+      title
+      price
+      mainImage {
+        asset {
+          url
+        }
       }
+      bodyRaw
+    }
+    allAdditionalService {
+      title
+      description
+      icon
+    }
+    allLockup(where: { key: $key }) {
+      title
+      descriptionRaw
+    }
+  }
+`
+
+export const aboutPageQuery = gql`
+  query aboutPageQuery($key: StringFilter) {
+    allLockup(where: { key: $key }) {
+      title
+      descriptionRaw
     }
   }
 `
 
 export const contactPageQuery = gql`
-  query contactPageQuery {
-    allPost {
-      slug {
-        current
-      }
+  query contactPageQuery($key: StringFilter) {
+    allLockup(where: { key: $key }) {
+      title
+      descriptionRaw
     }
   }
 `

@@ -5,10 +5,11 @@ import Heading from '../components/Heading'
 import Split from '../components/Split'
 import Container from '../components/Container'
 import Pricing from '../components/Pricing'
-import { indexPageQuery } from '../data/queries'
+import { allServicesQuery } from '../data/queries'
+import { PortableText } from '@portabletext/react'
 
 const Index = ({ data }) => {
-  const { allPost, allProject } = data
+  const { allService, allAdditionalService, allLockup } = data
   return (
     <Layout
       hero={<Hero short title="Services" />}
@@ -17,21 +18,17 @@ const Index = ({ data }) => {
     >
       <div className="text-center">
         <Container size="narrow">
-          <Heading>How can I help?</Heading>
+          <Heading>{allLockup[0].title}</Heading>
           <div className="prose mt-5 max-w-none font-body">
-            <p>
-              I offer a range of different services to help you with your
-              interior projects - from the small to the big time! Whether you
-              just need some inspiration, you have a tight budget but big
-              ambitions, or you need ideas to change a layout that doesn't work,
-              I can help. If there's something you're not sure about,{' '}
-              <a href="/contact">please get in touch!</a>
-            </p>
+            <PortableText value={allLockup[0].descriptionRaw} />
           </div>
         </Container>
       </div>
 
-      <Pricing />
+      <Pricing
+        services={allService}
+        additionalServices={allAdditionalService}
+      />
     </Layout>
   )
 }
@@ -39,7 +36,8 @@ const Index = ({ data }) => {
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
-    query: indexPageQuery,
+    query: allServicesQuery,
+    variables: { key: { eq: 'services' } },
   })
 
   const documentProps = addApolloState(apolloClient, {

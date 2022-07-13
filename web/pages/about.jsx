@@ -3,29 +3,18 @@ import Layout from '../components/Layout'
 import { aboutPageQuery } from '../data/queries'
 import Hero from '../components/Hero'
 import Split from '../components/Split'
-import HypeStrip from '../components/HypeStrip'
+import { PortableText } from '@portabletext/react'
 
 const Index = ({ data }) => {
-  const { allNavigation, allFooterNavigation } = data
+  const { allLockup } = data
   return (
     <Layout
       hero={<Hero short title="About" />}
       darkNavigation
       overlayedNavigation
     >
-      <Split heading="Hi, I'm Beth!" imgUrl="/images/beth.jpg">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-          magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-          alias eos accusantium vel quia officia ipsa nemo exercitationem
-          asperiores!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-          magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-          alias eos accusantium vel quia officia ipsa nemo exercitationem
-          asperiores!
-        </p>
+      <Split heading={allLockup[0].title} imgUrl="/images/beth.jpg">
+        <PortableText value={allLockup[0].descriptionRaw} />
       </Split>
     </Layout>
   )
@@ -35,6 +24,7 @@ export async function getStaticProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: aboutPageQuery,
+    variables: { key: { eq: 'about' } },
   })
   const documentProps = addApolloState(apolloClient, {
     props: { data },
