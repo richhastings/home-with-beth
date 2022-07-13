@@ -14,9 +14,9 @@ module.exports = {
       champagne: '#F7E7CE',
       white: '#FFF',
       black: '#222',
-      green: '#648B80',
-      darkgreen: '#437567',
-      purple: '#9693AC',
+      lightgrey: '#aaa',
+      lightestgrey: '#eee',
+      darkgrey: '#444',
     },
   },
   plugins: [

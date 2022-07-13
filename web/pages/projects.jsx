@@ -8,15 +8,15 @@ import Grid from '../components/Grid'
 
 const ProjectLandingPage = ({ data }) => {
   const { allProject } = data
-  // return (
-  //   <Layout>
-  //     <Hero title="Projects" tight></Hero>
-  //     <Grid variant="cover" items={allProject} />
-
-  //     <HypeStrip />
-  //   </Layout>
-  // )
-  return null
+  return (
+    <Layout
+      hero={<Hero title="Projects" short />}
+      darkNavigation
+      overlayedNavigation
+    >
+      <Grid variant="cover" items={allProject} />
+    </Layout>
+  )
 }
 
 export async function getStaticProps() {

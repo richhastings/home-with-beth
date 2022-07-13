@@ -1,5 +1,6 @@
 import Heading from '../Heading'
 import { useRouter } from 'next/router'
+import Button from '../Button'
 
 const HypeStrip = () => {
   const { pathname } = useRouter()
@@ -13,12 +14,7 @@ const HypeStrip = () => {
         <Heading>{title}</Heading>
         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
           <div className="inline-flex rounded-md">
-            <a
-              href={ctaUrl}
-              className="border-transparent bg-indigo-600 hover:bg-indigo-700 inline-flex items-center justify-center rounded-md border px-5 py-3 text-base font-medium text-black"
-            >
-              {ctaText}
-            </a>
+            <Button href={ctaUrl}>{ctaText}</Button>
           </div>
         </div>
       </div>

@@ -6,29 +6,29 @@ import Split from '../components/Split'
 import HypeStrip from '../components/HypeStrip'
 
 const Index = ({ data }) => {
-  // const { allNavigation, allFooterNavigation } = data
-  // return (
-  //   <Layout>
-  //     <Hero tight title="About" />
-  //     <Split heading="Hi, I'm Beth!" imgUrl="/images/beth.jpg">
-  //       <p>
-  //         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-  //         magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-  //         alias eos accusantium vel quia officia ipsa nemo exercitationem
-  //         asperiores!
-  //       </p>
-  //       <p>
-  //         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-  //         magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-  //         alias eos accusantium vel quia officia ipsa nemo exercitationem
-  //         asperiores!
-  //       </p>
-  //     </Split>
-  //     <HypeStrip />
-  //   </Layout>
-  // )
-
-  return null
+  const { allNavigation, allFooterNavigation } = data
+  return (
+    <Layout
+      hero={<Hero short title="About" />}
+      darkNavigation
+      overlayedNavigation
+    >
+      <Split heading="Hi, I'm Beth!" imgUrl="/images/beth.jpg">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
+          magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
+          alias eos accusantium vel quia officia ipsa nemo exercitationem
+          asperiores!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
+          magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
+          alias eos accusantium vel quia officia ipsa nemo exercitationem
+          asperiores!
+        </p>
+      </Split>
+    </Layout>
+  )
 }
 
 export async function getStaticProps() {

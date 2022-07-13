@@ -1,22 +1,25 @@
 import { addApolloState, initializeApollo } from '../data/apollo'
 import Layout from '../components/Layout'
-// import Hero from '../components/Hero'
-// import Grid from '../components/Grid'
-// import Split from '../components/Split'
-// import Features from '../components/Features'
-// import HypeStrip from '../components/HypeStrip'
-import Holding from '../components/Holding'
+import Hero from '../components/Hero'
+import Grid from '../components/Grid'
+import Split from '../components/Split'
+import HypeStrip from '../components/HypeStrip'
 import { indexPageQuery } from '../data/queries'
 
 const Index = ({ data }) => {
   const { allPost, allProject } = data
+  console.log(22222, allProject)
   return (
-    <Layout overlayedNavigation>
-      {/* <Hero
-        title="Home with Beth"
-        subtitle="​Interior styling and design"
-        imgUrl="/images/hero.jpg"
-      />
+    <Layout
+      hero={
+        <Hero
+          title="Home with Beth"
+          subtitle="​Interior styling and design"
+          imgUrl="/images/hero.jpg"
+        />
+      }
+      overlayedNavigation
+    >
       <Split heading="Services" ctaUrl="/services" ctaText="View all services">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
@@ -31,6 +34,7 @@ const Index = ({ data }) => {
           asperiores!
         </p>
       </Split>
+      <hr />
       <Grid
         columns="2"
         variant="cover"
@@ -39,14 +43,14 @@ const Index = ({ data }) => {
         ctaText="View all projects"
         ctaUrl="/projects"
       />
+      <hr />
       <Grid
         title="Latest posts"
         items={allPost}
         ctaText="View all posts"
         ctaUrl="/blog"
       />
-      <HypeStrip /> */}
-      <Holding />
+      {/* <Holding /> */}
     </Layout>
   )
 }

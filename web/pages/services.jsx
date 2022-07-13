@@ -1,37 +1,39 @@
 import { addApolloState, initializeApollo } from '../data/apollo'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import Grid from '../components/Grid'
+import Heading from '../components/Heading'
 import Split from '../components/Split'
-import HypeStrip from '../components/HypeStrip'
+import Container from '../components/Container'
 import Pricing from '../components/Pricing'
 import { indexPageQuery } from '../data/queries'
 
 const Index = ({ data }) => {
   const { allPost, allProject } = data
-  // return (
-  //   <Layout>
-  //     <Hero tight title="Services" />
-  //     <Split heading="How can I help?">
-  //       <p>
-  //         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-  //         magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-  //         alias eos accusantium vel quia officia ipsa nemo exercitationem
-  //         asperiores!
-  //       </p>
-  //       <p>
-  //         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-  //         magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-  //         alias eos accusantium vel quia officia ipsa nemo exercitationem
-  //         asperiores!
-  //       </p>
-  //     </Split>
+  return (
+    <Layout
+      hero={<Hero short title="Services" />}
+      darkNavigation
+      overlayedNavigation
+    >
+      <div className="text-center">
+        <Container size="narrow">
+          <Heading>How can I help?</Heading>
+          <div className="prose mt-5 max-w-none font-body">
+            <p>
+              I offer a range of different services to help you with your
+              interior projects - from the small to the big time! Whether you
+              just need some inspiration, you have a tight budget but big
+              ambitions, or you need ideas to change a layout that doesn't work,
+              I can help. If there's something you're not sure about,{' '}
+              <a href="/contact">please get in touch!</a>
+            </p>
+          </div>
+        </Container>
+      </div>
 
-  //     <Pricing />
-  //     <HypeStrip />
-  //   </Layout>
-  // )
-  return null
+      <Pricing />
+    </Layout>
+  )
 }
 
 export async function getStaticProps() {

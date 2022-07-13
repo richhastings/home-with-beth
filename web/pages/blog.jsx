@@ -7,14 +7,15 @@ import HypeStrip from '../components/HypeStrip'
 
 const Index = ({ data }) => {
   const { allPost } = data
-  // return (
-  //   <Layout>
-  //     <Hero tight title="Blog" />
-  //     <Grid items={allPost} />
-  //     <HypeStrip />
-  //   </Layout>
-  // )
-  return null
+  return (
+    <Layout
+      hero={<Hero short title="Blog" />}
+      darkNavigation
+      overlayedNavigation
+    >
+      <Grid items={allPost} />
+    </Layout>
+  )
 }
 
 export async function getStaticProps() {

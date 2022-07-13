@@ -5,6 +5,11 @@ export const indexPageQuery = gql`
     allPost(limit: 3, sort: { _createdAt: ASC }) {
       _createdAt
       title
+      mainImage {
+        asset {
+          url
+        }
+      }
       slug {
         current
       }
@@ -12,6 +17,11 @@ export const indexPageQuery = gql`
     allProject(limit: 2, sort: { _createdAt: ASC }) {
       _createdAt
       title
+      mainImage {
+        asset {
+          url
+        }
+      }
       slug {
         current
       }
@@ -23,6 +33,11 @@ export const projectLandingPageQuery = gql`
   query projectLandingPageQuery {
     allProject {
       title
+      mainImage {
+        asset {
+          url
+        }
+      }
       slug {
         current
       }
@@ -34,6 +49,11 @@ export const projectPageQuery = gql`
     allProject(where: { slug: $slug }) {
       title
       bodyRaw
+      mainImage {
+        asset {
+          url
+        }
+      }
       slug {
         current
       }
@@ -58,6 +78,11 @@ export const blogLandingPageQuery = gql`
       slug {
         current
       }
+      mainImage {
+        asset {
+          url
+        }
+      }
     }
   }
 `
@@ -66,6 +91,12 @@ export const blogPageQuery = gql`
   query getPostBySlug($slug: SlugFilter) {
     allPost(where: { slug: $slug }) {
       title
+      bodyRaw
+      mainImage {
+        asset {
+          url
+        }
+      }
       slug {
         current
       }

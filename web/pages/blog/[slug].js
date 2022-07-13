@@ -4,6 +4,8 @@ import client from '../../client'
 import { PortableText } from '@portabletext/react'
 import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../../components/Layout'
+import Container from '../../components/Container'
+import Heading from '../../components/Heading'
 import { allPostsQuery, blogPageQuery } from '../../data/queries'
 
 function urlFor(source) {
@@ -28,21 +30,16 @@ const ptComponents = {
 }
 
 const Post = (props) => {
-  const { title = 'Missing title', categories = [], body = [] } = props
-  // return (
-  //   <Layout>
-  //     <article>
-  //       <p>{title}</p>
-  //       <div>
-  //         {categories &&
-  //           categories.length &&
-  //           categories.map((category) => category)}
-  //       </div>
-  //       <PortableText value={body} components={ptComponents} />
-  //     </article>
-  //   </Layout>
-  // )
-  return null
+  const { title = 'Missing title', categories = [], bodyRaw = [] } = props
+  return (
+    <Layout darkNavigation size="narrow">
+      <Heading>{title}</Heading>
+      <div className="prose max-w-none font-body">
+        <PortableText value={bodyRaw} components={ptComponents} />
+      </div>
+      <p>SHARING FUNCTIONS HERE</p>
+    </Layout>
+  )
 }
 
 export async function getStaticProps(context) {

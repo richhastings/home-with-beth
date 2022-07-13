@@ -1,173 +1,109 @@
 /* This example requires Tailwind CSS v2.0+ */
-import {
-  BriefcaseIcon,
-  CakeIcon,
-  CheckIcon,
-  HomeIcon,
-  LocationMarkerIcon,
-} from '@heroicons/react/outline'
+import { CheckCircleIcon } from '@heroicons/react/solid'
+import Container from '../Container'
 import Heading from '../Heading'
+import { LocationMarkerIcon } from '@heroicons/react/outline'
+import { CakeIcon } from '@heroicons/react/outline'
+import { HomeIcon } from '@heroicons/react/outline'
+import { BriefcaseIcon } from '@heroicons/react/outline'
 
-import {
-  CloudUploadIcon,
-  CogIcon,
-  LockClosedIcon,
-  RefreshIcon,
-  ServerIcon,
-  ShieldCheckIcon,
-} from '@heroicons/react/outline'
-
-const pricing = {
-  tiers: [
-    {
-      title: 'Wet your whistle',
-      price: 24,
-      frequency: '/month',
-      description:
-        'A moodboard full of inspiration to get your started on your journey.',
-      features: [
-        '5 products',
-        'Up to 1,000 subscribers',
-        'Basic analytics',
-        '48-hour support response time',
-      ],
-      cta: 'Monthly billing',
-      // mostPopular: false,
-    },
-    {
-      title: 'Room service',
-      price: 32,
-      frequency: '/month',
-      description: 'A plan that scales with your rapidly growing business.',
-      features: [
-        '25 products',
-        'Up to 10,000 subscribers',
-        'Advanced analytics',
-        '24-hour support response time',
-        'Marketing automations',
-      ],
-      cta: 'Monthly billing',
-      // mostPopular: true,
-    },
-    {
-      title: 'The full works',
-      price: 48,
-      frequency: '/month',
-      description: 'Dedicated support and infrastructure for your company.',
-      features: [
-        'Unlimited products',
-        'Unlimited subscribers',
-        'Advanced analytics',
-        '1-hour, dedicated support response time',
-        'Marketing automations',
-        'Custom integrations',
-      ],
-      cta: 'Monthly billing',
-      // mostPopular: false,
-    },
-  ],
-}
-
-const features = [
-  {
-    name: 'Are you local?',
-    description:
-      'If you live within a 25 mile radius, I offer a home visit for no extra charge!',
-    icon: LocationMarkerIcon,
-  },
-  {
-    name: 'Planning a kitchen?',
-    description:
-      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: CakeIcon,
-  },
-  {
-    name: 'Renovating more than one room?',
-    description:
-      'I offer a discount of 20% for two rooms and 30% for 3 rooms or more.',
-    icon: HomeIcon,
-  },
-  {
-    name: 'Need commercial design?',
-    description:
-      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: BriefcaseIcon,
-  },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function Example() {
-  return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
-        {pricing.tiers.map((tier) => (
-          <div
-            key={tier.title}
-            className="border-gray-200 relative flex flex-col rounded-2xl border bg-champagne/25 p-8 shadow-sm"
-          >
-            <div className="flex-1 font-body">
-              <Heading size="sm">{tier.title}</Heading>
-
-              <p className="text-gray-500 mt-6">{tier.description}</p>
-
-              <ul role="list" className="mt-6 space-y-6">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex">
-                    <CheckIcon
-                      className="text-indigo-500 h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span className="text-gray-500 ml-3">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-gray-900 mt-4 flex items-baseline">
-                <span className="text-5xl font-extrabold tracking-tight">
-                  ${tier.price}
-                </span>
-                <span className="ml-1 text-xl font-semibold">
-                  {tier.frequency}
-                </span>
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="relative bg-white py-16 font-body sm:py-24 lg:py-32">
-        <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8">
-          <div className="mt-12">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
-              {features.map((feature) => (
-                <div key={feature.name} className="pt-6">
-                  <div className="flow-root rounded-lg border bg-champagne/25 px-6 pb-8">
-                    <div className="-mt-6">
-                      <div>
-                        <span className="inline-flex items-center justify-center rounded-md bg-champagne p-3">
-                          <feature.icon
-                            className="h-6 w-6 text-black"
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </div>
-                      <h3 className="text-gray-900 mt-8 text-lg font-bold tracking-tight">
-                        {feature.name}
-                      </h3>
-                      <p className="text-gray-500 mt-5 text-base">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+const PricingBlock = ({ name, description, imageUrl, price }) => (
+  <div className="items-center justify-between rounded-md border border-lightgrey bg-champagne/25 p-8 lg:flex">
+    <div>
+      <Heading>
+        {name}
+        <div className="prose font-body font-bold">{price}</div>
+      </Heading>
+      <div
+        className="prose mt-5 font-body"
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
     </div>
+    <div className="ml-16 flex max-w-[400px] flex-shrink-0 overflow-hidden rounded-md">
+      <img src={imageUrl} />
+    </div>
+  </div>
+)
+
+const Pricing = () => {
+  const tiers = [
+    {
+      name: 'Get Inspired',
+      imageUrl: '/images/slide1.jpg',
+      description:
+        "​Got an interior project in the works, but don't know where to start? I can help to get all of your ideas into a cohesive scheme that should help to focus your vision.<br /> After a 30 minute consultation, you receive a bespoke design concept board which you can then work from as a source of inspiration to bring your vision to life. You will receive your concept board alongside an email, explaining the textiles, materials and patterns to best look out for to make sure your space is cohesive and beautiful.",
+      price: '£65',
+    },
+    {
+      name: 'Personal shopping',
+      imageUrl: '/images/slide2.jpg',
+      description:
+        '​Sometimes you need a little extra help! With this service we will start with a consultation up to an hour long, to discuss your needs and the details of the space you are updating. I will provide you with a bespoke concept board in which all items are carefully curated to maximise your specified budget. <br />During our consultation I will take some basic measurements of your space, and any pieces that are staying which will need to be worked into the new scheme. You will receive links to all sourced items, and a detailed email with suggestions on how to best make your space work.',
+      price: '£100',
+    },
+    {
+      name: 'Interior design',
+      imageUrl: '/images/slide3.jpg',
+      description:
+        '​​Are you looking to totally transform a space? With this service I will start with an hour long consultation in which I will need to take thorough measurements of your space and talk with you about what your hope to achieve in your renovation. <br />I will produce a range of 3D visuals and a floor plan, which alongside concept and material boards, should help you to really envisage your new space. I will ensure that suggestions for new furniture and decor fits a specified budget, and in a final consultation I will talk you through the design and suggest appropriate trades where needed.',
+      price: 'Prices start from £200',
+    },
+  ]
+
+  const features = [
+    {
+      name: 'Are you local?',
+      description:
+        'If you live within a 25 mile radius, I offer a home visit for no extra charge!',
+      icon: LocationMarkerIcon,
+    },
+    {
+      name: 'Planning a kitchen?',
+      description:
+        'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+      icon: CakeIcon,
+    },
+    {
+      name: 'Renovating more than one room?',
+      description:
+        'I offer a discount of 20% for two rooms and 30% for 3 rooms or more.',
+      icon: HomeIcon,
+    },
+    {
+      name: 'Need commercial design?',
+      description:
+        'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
+      icon: BriefcaseIcon,
+    },
+  ]
+
+  return (
+    <>
+      {tiers.map((tier) => (
+        <PricingBlock {...tier} />
+      ))}
+      <Container size="narrow">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2">
+          {features.map((feature) => (
+            <div className="text-center">
+              <div className="mb-2">
+                <span className="inline-flex items-center justify-center rounded-md bg-lightestgrey p-3">
+                  <feature.icon
+                    className="h-6 w-6 text-black"
+                    aria-hidden="true"
+                  />
+                </span>
+              </div>
+              <div className="prose font-body">
+                <h3>{feature.name}</h3>
+                <p>{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </>
   )
 }
 
-/* This example requires Tailwind CSS v2.0+ */
+export default Pricing

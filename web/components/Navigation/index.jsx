@@ -4,16 +4,16 @@ import { HomeIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 import { primaryLinks, secondaryLinks } from './links'
 import SocialLinks from '../SocialLinks'
+import Container from '../Container'
 
-const Navigation = ({ overlayed }) => {
-  const wrapperClasses = overlayed
-    ? 'absolute z-[1] w-full text-white'
-    : 'bg-champagne'
+const Navigation = ({ dark, overlayed }) => {
+  const wrapperClasses = overlayed ? 'absolute z-[1] w-full' : 'mb-4 md:mb-8'
+  const textColorClasses = dark ? 'text-black' : 'text-white'
   return (
-    <Disclosure as="nav" className={wrapperClasses}>
+    <Disclosure as="nav" className={`${wrapperClasses} ${textColorClasses}`}>
       {({ open }) => (
         <>
-          <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <Container>
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -63,7 +63,7 @@ const Navigation = ({ overlayed }) => {
                 <SocialLinks />
               </div>
             </div>
-          </div>
+          </Container>
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">

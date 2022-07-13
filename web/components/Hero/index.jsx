@@ -1,11 +1,11 @@
 import classNames from 'classnames'
 import Heading from '../Heading'
 
-const Hero = ({ title, subtitle, tight, imgUrl }) => (
+const Hero = ({ title, subtitle, short, imgUrl }) => (
   <div
     className={classNames(
       'relative bg-champagne text-center sm:overflow-hidden',
-      tight ? 'h-[30vh]' : 'h-[calc(100vh)]'
+      short ? 'h-[35vh]' : 'h-[calc(100vh)]'
     )}
   >
     {imgUrl && (

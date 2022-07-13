@@ -4,6 +4,7 @@ import client from '../../client'
 import { PortableText } from '@portabletext/react'
 import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../../components/Layout'
+import Container from '../../components/Container'
 import { allProjectsQuery, projectPageQuery } from '../../data/queries'
 import Hero from '../../components/Hero'
 import Image from 'next/image'
@@ -39,25 +40,25 @@ const ptComponents = {
 }
 
 const Project = (props) => {
-  const { title = 'Missing title', bodyRaw = [] } = props
+  const { title = 'Missing title', bodyRaw = [], mainImage } = props
 
-  // return (
-  //   <Layout tightNavigation>
-  //     <article>
-  //       <Hero tight title={title} />
-  //       {/* <div>
-  //         {categories &&
-  //           categories.length &&
-  //           categories.map((category) => category)}
-  //       </div> */}
-  //       <div className="prose mx-auto max-w-3xl px-4 py-8 font-body lg:py-16">
-  //         <PortableText value={bodyRaw} components={ptComponents} />
-  //       </div>
-  //     </article>
-  //   </Layout>
-  // )
-
-  return null
+  return (
+    <Layout
+      hero={<Hero short imgUrl={mainImage.asset.url} title={title} />}
+      size="narrow"
+      overlayedNavigation
+    >
+      {/* <div>
+          {categories &&
+            categories.length &&
+            categories.map((category) => category)}
+        </div> */}
+      {/* <<div className="prose mx-auto max-w-3xl px-4 py-8 font-body lg:py-16">> */}
+      <div className="prose max-w-none font-body">
+        <PortableText value={bodyRaw} components={ptComponents} />
+      </div>
+    </Layout>
+  )
 }
 
 export async function getStaticProps(context) {
