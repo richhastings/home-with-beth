@@ -44,7 +44,8 @@ const Project = (props) => {
 
   return (
     <Layout
-      hero={<Hero short imgUrl={mainImage.asset.url} title={title} />}
+      // hero={<Hero short imgUrl={mainImage.asset.url} title={title} />}
+      hero={<p>test</p>}
       size="narrow"
       overlayedNavigation
     >
