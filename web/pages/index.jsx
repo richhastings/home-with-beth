@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { addApolloState, initializeApollo } from '../data/apollo'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -5,6 +6,7 @@ import Grid from '../components/Grid'
 import Split from '../components/Split'
 import { indexPageQuery } from '../data/queries'
 import { PortableText } from '@portabletext/react'
+import axios from 'axios'
 
 const Index = ({ data }) => {
   const { allPost, allProject, allLockup } = data
@@ -42,6 +44,7 @@ const Index = ({ data }) => {
         ctaText="View all posts"
         ctaUrl="/blog"
       />
+      <Insta />
       {/* <Holding /> */}
     </Layout>
   )
@@ -61,3 +64,38 @@ export async function getStaticProps() {
 }
 
 export default Index
+
+const Insta = () => {
+  const [feeds, setFeedsData] = useState([])
+  useEffect(() => {
+    // this is to avoid memory leaks
+    const abortController = new AbortController()
+
+    const token =
+      'IGQVJWellaWlFMaXNhWmx0d2NOOEtiaUVwN1NOM3FDUEd5a0Y2UFN1Q1o5T1BNMU1WbXpoZAHFyRmtfRlRxNGlYNDB5YTltd1JBNmFsSzAxc3JpWnB4c3cxOHktQTUxNU0wMmY1dnBB'
+
+    async function fetchInstagramPost() {
+      try {
+        axios
+          .get(
+            `https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption&limit=${12}&access_token=${token}`
+          )
+          .then((resp) => {
+            setFeedsData(resp.data.data)
+          })
+      } catch (err) {
+        console.log('error', err)
+      }
+    }
+
+    // manually call the fecth function
+    fetchInstagramPost()
+
+    return () => {
+      // cancel pending fetch request on component unmount
+      abortController.abort()
+    }
+  })
+
+  return feeds.map((feed) => <img src={feed.media_url} />)
+}
