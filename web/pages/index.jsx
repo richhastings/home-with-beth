@@ -44,7 +44,7 @@ const Index = ({ data }) => {
         ctaText="View all posts"
         ctaUrl="/blog"
       />
-      <Insta />
+      {/* <Insta /> */}
       {/* <Holding /> */}
     </Layout>
   )
@@ -65,37 +65,37 @@ export async function getStaticProps() {
 
 export default Index
 
-const Insta = () => {
-  const [feeds, setFeedsData] = useState([])
-  useEffect(() => {
-    // this is to avoid memory leaks
-    const abortController = new AbortController()
+// const Insta = () => {
+//   const [feeds, setFeedsData] = useState([])
+//   useEffect(() => {
+//     // this is to avoid memory leaks
+//     const abortController = new AbortController()
 
-    const token =
-      'IGQVJWellaWlFMaXNhWmx0d2NOOEtiaUVwN1NOM3FDUEd5a0Y2UFN1Q1o5T1BNMU1WbXpoZAHFyRmtfRlRxNGlYNDB5YTltd1JBNmFsSzAxc3JpWnB4c3cxOHktQTUxNU0wMmY1dnBB'
+//     const token = IN NOTES
+//
 
-    async function fetchInstagramPost() {
-      try {
-        axios
-          .get(
-            `https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption&limit=${12}&access_token=${token}`
-          )
-          .then((resp) => {
-            setFeedsData(resp.data.data)
-          })
-      } catch (err) {
-        console.log('error', err)
-      }
-    }
+//     async function fetchInstagramPost() {
+//       try {
+//         axios
+//           .get(
+//             `https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption&limit=${12}&access_token=${token}`
+//           )
+//           .then((resp) => {
+//             setFeedsData(resp.data.data)
+//           })
+//       } catch (err) {
+//         console.log('error', err)
+//       }
+//     }
 
-    // manually call the fecth function
-    fetchInstagramPost()
+//     // manually call the fecth function
+//     fetchInstagramPost()
 
-    return () => {
-      // cancel pending fetch request on component unmount
-      abortController.abort()
-    }
-  })
+//     return () => {
+//       // cancel pending fetch request on component unmount
+//       abortController.abort()
+//     }
+//   })
 
-  return feeds.map((feed) => <img src={feed.media_url} />)
-}
+//   return feeds.map((feed) => <img src={feed.media_url} />)
+// }
