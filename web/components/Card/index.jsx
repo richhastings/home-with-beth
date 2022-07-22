@@ -1,7 +1,6 @@
-import ShadowWrapper from '../ShadowWrapper'
 import client from '../../client'
 import imageUrlBuilder from '@sanity/image-url'
-import Linkå from 'next/link'
+import Link from 'next/link'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
