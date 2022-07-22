@@ -1,19 +1,8 @@
 import Heading from '../Heading'
-import CoverGrid from './CoverGrid'
-import StandardGrid from './StandardGrid'
 import Button from '../Button'
-import Container from '../Container'
+import Card from '../Card'
 
-const Grid = ({
-  title,
-  subtitle,
-  items,
-  ctaText,
-  ctaUrl,
-  variant,
-  columns,
-}) => {
-  const GridComponent = variant === 'cover' ? CoverGrid : StandardGrid
+const Grid = ({ title, subtitle, items, ctaText, ctaUrl }) => {
   return (
     <div>
       {title && (
@@ -24,7 +13,11 @@ const Grid = ({
           )}
         </div>
       )}
-      <GridComponent columns={columns} items={items} />
+      <div className="grid gap-5 lg:grid-cols-3">
+        {items.map((item, i) => (
+          <Card isLast={i === items.length - 1} {...item} key={`card${i}`} />
+        ))}
+      </div>
       {ctaText && ctaUrl && (
         <div className="pt-8 text-center">
           <Button href={ctaUrl}>{ctaText}</Button>

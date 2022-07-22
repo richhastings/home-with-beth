@@ -9,7 +9,7 @@ import { PortableText } from '@portabletext/react'
 import axios from 'axios'
 
 const Index = ({ data }) => {
-  const { allPost, allProject, allLockup } = data
+  const { allPost, allLockup } = data
   return (
     <Layout
       hero={
@@ -28,16 +28,7 @@ const Index = ({ data }) => {
       >
         <PortableText value={allLockup[0].descriptionRaw} />
       </Split>
-      <hr />
-      <Grid
-        columns="2"
-        variant="cover"
-        title="Latest projects"
-        items={allProject}
-        ctaText="View all projects"
-        ctaUrl="/projects"
-      />
-      <hr />
+
       <Grid
         title="Latest posts"
         items={allPost}

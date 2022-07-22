@@ -8,7 +8,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import blockContent from './blockContent'
 import category from './category'
 import post from './post'
-import project from './project'
 import service from './service'
 import additionalService from './additional-service'
 import lockup from './lockup'
@@ -23,7 +22,6 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     post,
-    project,
     category,
     service,
     additionalService,

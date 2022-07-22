@@ -14,63 +14,9 @@ export const indexPageQuery = gql`
         current
       }
     }
-    allProject(limit: 2, sort: { _createdAt: ASC }) {
-      _createdAt
-      title
-      mainImage {
-        asset {
-          url
-        }
-      }
-      slug {
-        current
-      }
-    }
     allLockup(where: { key: $key }) {
       title
       descriptionRaw
-    }
-  }
-`
-
-export const projectLandingPageQuery = gql`
-  query projectLandingPageQuery {
-    allProject {
-      title
-      mainImage {
-        asset {
-          url
-        }
-      }
-      slug {
-        current
-      }
-    }
-  }
-`
-export const projectPageQuery = gql`
-  query getPostBySlug($slug: SlugFilter) {
-    allProject(where: { slug: $slug }) {
-      title
-      bodyRaw
-      mainImage {
-        asset {
-          url
-        }
-      }
-      slug {
-        current
-      }
-    }
-  }
-`
-
-export const allProjectsQuery = gql`
-  query allProjectsQuery {
-    allProject {
-      slug {
-        current
-      }
     }
   }
 `

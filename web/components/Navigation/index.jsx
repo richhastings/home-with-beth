@@ -38,7 +38,7 @@ const Navigation = ({ dark, overlayed }) => {
                         <a
                           key={item.label}
                           href={item.url}
-                          className="text-md block font-body font-bold"
+                          className="text-md block font-body font-bold hover:underline"
                           // aria-current={item.current ? 'page' : undefined}
                         >
                           {item.label}
@@ -48,18 +48,6 @@ const Navigation = ({ dark, overlayed }) => {
                 </div>
               </div>
               <div className="flex gap-8">
-                {secondaryLinks &&
-                  secondaryLinks.length > 0 &&
-                  secondaryLinks.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.url}
-                      className="text-md block font-body font-bold"
-                      // aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
                 <SocialLinks />
               </div>
             </div>
@@ -68,8 +56,7 @@ const Navigation = ({ dark, overlayed }) => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {primaryLinks &&
-                secondaryLinks &&
-                [...primaryLinks, ...secondaryLinks].map((item) => (
+                primaryLinks.map((item) => (
                   <Disclosure.Button
                     key={item.name}
                     as="a"
@@ -77,7 +64,7 @@ const Navigation = ({ dark, overlayed }) => {
                     className={classNames(
                       item.current
                         ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-champagne',
                       'block rounded-md px-3 py-2 text-base font-medium'
                     )}
                     aria-current={item.current ? 'page' : undefined}
