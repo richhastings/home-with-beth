@@ -55,24 +55,24 @@ export async function getServerSideProps(context) {
   return { props: { ...documentProps.props } }
 }
 
-export async function getStaticPaths() {
-  const apolloClient = initializeApollo()
+// export async function getStaticPaths() {
+//   const apolloClient = initializeApollo()
 
-  const posts = await apolloClient.query({
-    query: allPostsQuery,
-    variables: {},
-  })
+//   const posts = await apolloClient.query({
+//     query: allPostsQuery,
+//     variables: {},
+//   })
 
-  const paths = posts.data.allPost.map((post) => ({
-    params: {
-      slug: post.slug.current,
-    },
-  }))
+//   const paths = posts.data.allPost.map((post) => ({
+//     params: {
+//       slug: post.slug.current,
+//     },
+//   }))
 
-  return {
-    paths,
-    fallback: true,
-  }
-}
+//   return {
+//     paths,
+//     fallback: true,
+//   }
+// }
 
 export default Post
