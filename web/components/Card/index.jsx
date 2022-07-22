@@ -1,13 +1,14 @@
 import ShadowWrapper from '../ShadowWrapper'
 import client from '../../client'
 import imageUrlBuilder from '@sanity/image-url'
+import Linkå from 'next/link'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
 const Card = ({ title, description, mainImage, slug }) => (
-  <a
+  <Link
     className="rounded-md border border-lightgrey font-body hover:opacity-70"
     href={`/blog/${slug.current}`}
   >
@@ -24,7 +25,7 @@ const Card = ({ title, description, mainImage, slug }) => (
       <p className="font-bold">{title}</p>
       <p className="">{description}</p>
     </div>
-  </a>
+  </Link>
 )
 
 export default Card

@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { primaryLinks, secondaryLinks } from './links'
 import SocialLinks from '../SocialLinks'
 import Container from '../Container'
+import Link from 'next/link'
 
 const Navigation = ({ dark, overlayed }) => {
   const wrapperClasses = overlayed ? 'absolute z-[1] w-full' : 'mb-4 md:mb-8'
@@ -29,20 +30,20 @@ const Navigation = ({ dark, overlayed }) => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:block">
                   <div className="flex gap-8 ">
-                    <a className="" href="/">
+                    <Link className="" href="/">
                       <HomeIcon className="block h-6 w-6" />
-                    </a>
+                    </Link>
                     {primaryLinks &&
                       primaryLinks.length > 0 &&
                       primaryLinks.map((item) => (
-                        <a
+                        <Link
                           key={item.label}
                           href={item.url}
                           className="text-md block font-body font-bold hover:underline"
                           // aria-current={item.current ? 'page' : undefined}
                         >
                           {item.label}
-                        </a>
+                        </Link>
                       ))}
                   </div>
                 </div>
