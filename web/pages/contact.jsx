@@ -200,7 +200,7 @@ const Index = ({ data }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: contactPageQuery,
