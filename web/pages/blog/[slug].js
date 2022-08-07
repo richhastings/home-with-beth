@@ -30,11 +30,11 @@ const ptComponents = {
 }
 
 const Post = (props) => {
-  const { title = 'Missing title', categories = [], bodyRaw = [] } = props
+  const { title = 'Missing title', bodyRaw = [] } = props
   return (
-    <Layout darkNavigation size="narrow">
+    <Layout navigationBackground="white" size="narrow">
       <Heading>{title}</Heading>
-      <div className="prose max-w-none font-body">
+      <div className="prose !mt-[30px] max-w-none font-body">
         <PortableText value={bodyRaw} components={ptComponents} />
       </div>
       <p>SHARING FUNCTIONS HERE</p>

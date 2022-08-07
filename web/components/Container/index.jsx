@@ -1,6 +1,6 @@
 const Container = ({ children, size }) => {
   const widthClassMap = {
-    narrow: 'max-w-3xl',
+    narrow: 'max-w-4xl',
     medium: 'max-w-5xl',
   }
   return (

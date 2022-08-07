@@ -5,7 +5,7 @@ const Hero = ({ title, subtitle, short, imgUrl }) => (
   <div
     className={classNames(
       'relative bg-champagne text-center sm:overflow-hidden',
-      short ? 'h-[35vh]' : 'h-[calc(100vh)]'
+      short ? 'pb-4 sm:pt-8 sm:pb-12' : 'h-[60vh] md:h-screen'
     )}
   >
     {imgUrl && (
@@ -24,9 +24,11 @@ const Hero = ({ title, subtitle, short, imgUrl }) => (
     >
       <div>
         <Heading size="lg">{title}</Heading>
-        <p className="mx-auto mt-6 max-w-lg text-center font-body text-xl font-bold text-white sm:max-w-3xl">
-          {subtitle}
-        </p>
+        {subtitle && (
+          <p className="mx-auto mt-6 max-w-lg text-center font-body text-xl font-bold text-white sm:max-w-3xl">
+            {subtitle}
+          </p>
+        )}
       </div>
     </div>
   </div>

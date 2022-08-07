@@ -6,38 +6,50 @@ import Grid from '../components/Grid'
 import Split from '../components/Split'
 import { indexPageQuery } from '../data/queries'
 import { PortableText } from '@portabletext/react'
-import axios from 'axios'
+// import axios from 'axios'
+import Head from 'next/head'
+import Meta from '../components/Meta'
 
 const Index = ({ data }) => {
   const { allPost, allLockup } = data
   return (
-    <Layout
-      hero={
-        <Hero
-          title="Home with Beth"
-          subtitle="​Interior styling and design"
-          imgUrl="/images/hero.jpg"
+    <>
+      <Head>
+        <Meta
+          url=""
+          seoTitle="Home with Beth | Home"
+          description="​Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
+          imageUrl="https://img.clock.co.uk/300"
         />
-      }
-      overlayedNavigation
-    >
-      <Split
-        heading={allLockup[0].title}
-        ctaUrl="/services"
-        ctaText="View all services"
+      </Head>
+      <Layout
+        navigationBackground="transparent"
+        hero={
+          <Hero
+            title="Home with Beth"
+            subtitle="​Interior styling and design"
+            imgUrl="/images/hero.jpg"
+          />
+        }
       >
-        <PortableText value={allLockup[0].descriptionRaw} />
-      </Split>
+        <Split
+          heading={allLockup[0].title}
+          ctaUrl="/services"
+          ctaText="View all services"
+        >
+          <PortableText value={allLockup[0].descriptionRaw} />
+        </Split>
 
-      <Grid
-        title="Latest posts"
-        items={allPost}
-        ctaText="View all posts"
-        ctaUrl="/blog"
-      />
-      {/* <Insta /> */}
-      {/* <Holding /> */}
-    </Layout>
+        <Grid
+          title="Latest posts"
+          items={allPost}
+          ctaText="View all posts"
+          ctaUrl="/blog"
+        />
+        {/* <Insta /> */}
+        {/* <Holding /> */}
+      </Layout>
+    </>
   )
 }
 

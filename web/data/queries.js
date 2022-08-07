@@ -66,7 +66,7 @@ export const allPostsQuery = gql`
 
 export const allServicesQuery = gql`
   query allServiceQuery($key: StringFilter) {
-    allService {
+    allService(sort: { price: ASC }) {
       title
       price
       mainImage {

@@ -9,11 +9,11 @@ const HypeStrip = () => {
   const ctaText = isServicesPage ? 'Contact me!' : 'View services'
   const ctaUrl = isServicesPage ? '/contact' : '/services'
   return (
-    <div className="bg-champagne">
-      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8">
+    <div className="bg-champagne text-center md:text-left">
+      <div className="md:mx-none mx-auto max-w-7xl py-6 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:py-16 lg:px-8">
         <Heading>{title}</Heading>
-        <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-          <div className="inline-flex rounded-md">
+        <div className="mx-auto mt-4 md:mx-0 md:mt-0 md:flex-shrink-0">
+          <div className="inline-flex rounded-md md:mr-4">
             <Button href={ctaUrl}>{ctaText}</Button>
           </div>
         </div>

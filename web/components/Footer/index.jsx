@@ -15,11 +15,10 @@ const Footer = () => {
         <nav className="mb-4" aria-label="Footer">
           {navigation.map((item) => (
             <div key={item.label} className="px-5 py-2">
-              <Link
-                href={item.url}
-                className="text-gray-500 hover:text-gray-900 text-base"
-              >
-                {item.label}
+              <Link href={item.url}>
+                <a className="text-gray-500 hover:text-gray-900 text-base">
+                  {item.label}
+                </a>
               </Link>
             </div>
           ))}

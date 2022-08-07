@@ -8,11 +8,7 @@ import HypeStrip from '../components/HypeStrip'
 const Index = ({ data }) => {
   const { allPost } = data
   return (
-    <Layout
-      hero={<Hero short title="Blog" />}
-      darkNavigation
-      overlayedNavigation
-    >
+    <Layout hero={<Hero short title="Blog" />}>
       <Grid items={allPost} />
     </Layout>
   )

@@ -11,11 +11,7 @@ export default {
     {
       name: 'price',
       title: 'Price',
-      type: 'string',
-      options: {
-        source: 'title',
-        maxLength: 10,
-      },
+      type: 'number',
     },
     {
       name: 'mainImage',

@@ -8,11 +8,7 @@ import { PortableText } from '@portabletext/react'
 const Index = ({ data }) => {
   const { allLockup } = data
   return (
-    <Layout
-      hero={<Hero short title="About" />}
-      darkNavigation
-      overlayedNavigation
-    >
+    <Layout hero={<Hero short title="About" />}>
       <Split heading={allLockup[0].title} imgUrl="/images/beth.jpg">
         <PortableText value={allLockup[0].descriptionRaw} />
       </Split>

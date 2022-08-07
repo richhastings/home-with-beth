@@ -6,14 +6,14 @@ const Grid = ({ title, subtitle, items, ctaText, ctaUrl }) => {
   return (
     <div>
       {title && (
-        <div className="mb-4 text-center md:mb-16">
+        <div className="mb-4 text-center lg:mb-8">
           <Heading>{title}</Heading>
           {subtitle && (
             <p className="mx-auto mt-3 max-w-2xl text-xl">{subtitle}</p>
           )}
         </div>
       )}
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-3">
         {items.map((item, i) => (
           <Card isLast={i === items.length - 1} {...item} key={`card${i}`} />
         ))}

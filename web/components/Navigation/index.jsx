@@ -7,18 +7,36 @@ import SocialLinks from '../SocialLinks'
 import Container from '../Container'
 import Link from 'next/link'
 
-const Navigation = ({ dark, overlayed }) => {
-  const wrapperClasses = overlayed ? 'absolute z-[1] w-full' : 'mb-4 md:mb-8'
-  const textColorClasses = dark ? 'text-black' : 'text-white'
+const Navigation = ({ background = 'champagne' }) => {
+  const backgroundClassMap = {
+    transparent: 'absolute z-[1] w-full text-white',
+    champagne: 'bg-champagne text-black',
+    white: 'bg-white text-black mb-4 sm:mb-8 lg:mb-16',
+  }
   return (
-    <Disclosure as="nav" className={`${wrapperClasses} ${textColorClasses}`}>
+    <Disclosure as="nav" className={`${backgroundClassMap[background]}`}>
       {({ open }) => (
         <>
+          <Disclosure.Panel className="bg-black transition-all sm:hidden">
+            <div className="flex items-center justify-between space-y-1 px-4 py-2 pb-3">
+              <Link href="/">
+                <a>
+                  <HomeIcon className="block h-6 w-full text-white" />
+                </a>
+              </Link>
+              {primaryLinks &&
+                primaryLinks.map((item) => (
+                  <Link href={item.url}>
+                    <a className={`font-body text-white`}>{item.label}</a>
+                  </Link>
+                ))}
+            </div>
+          </Disclosure.Panel>
           <Container>
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="text-gray-400 hover:bg-gray-700 inline-flex items-center justify-center rounded-md p-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="text-gray-400 hover:bg-gray-700 inline-flex items-center justify-center rounded-md hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -30,19 +48,18 @@ const Navigation = ({ dark, overlayed }) => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:block">
                   <div className="flex gap-8 ">
-                    <Link className="" href="/">
-                      <HomeIcon className="block h-6 w-6" />
+                    <Link href="/">
+                      <a>
+                        <HomeIcon className="block h-6 w-6" />
+                      </a>
                     </Link>
                     {primaryLinks &&
                       primaryLinks.length > 0 &&
                       primaryLinks.map((item) => (
-                        <Link
-                          key={item.label}
-                          href={item.url}
-                          className="text-md block font-body font-bold hover:underline"
-                          // aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.label}
+                        <Link key={item.label} href={item.url}>
+                          <a className="text-md block font-body font-bold hover:underline">
+                            {item.label}
+                          </a>
                         </Link>
                       ))}
                   </div>
@@ -53,28 +70,6 @@ const Navigation = ({ dark, overlayed }) => {
               </div>
             </div>
           </Container>
-
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              {primaryLinks &&
-                primaryLinks.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 ',
-                      'block rounded-md px-3 py-2 text-base font-medium'
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-            </div>
-          </Disclosure.Panel>
         </>
       )}
     </Disclosure>

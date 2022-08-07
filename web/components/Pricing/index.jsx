@@ -15,22 +15,26 @@ const IconMap = {
   map: LocationMarkerIcon,
 }
 
-const PricingBlock = ({ title, bodyRaw, mainImage, price }) => (
-  <div className="items-center justify-between rounded-md border border-lightgrey bg-champagne/25 p-8 lg:flex">
-    <div>
-      <Heading>
-        {title}
-        <div className="prose font-body font-bold">{price}</div>
-      </Heading>
-      <div className="prose mt-5 font-body">
-        <PortableText value={bodyRaw} />
+const PricingBlock = ({ title, bodyRaw, mainImage, price }) => {
+  const formattedPrice =
+    title === 'Interior design' ? `Prices from £${price}` : `£${price}`
+  return (
+    <div className="items-center justify-between rounded-md border border-lightgrey bg-champagne/25 p-8 lg:flex">
+      <div>
+        <Heading>
+          {title}
+          <div className="prose font-body font-bold">{formattedPrice}</div>
+        </Heading>
+        <div className="prose mt-4 font-body">
+          <PortableText value={bodyRaw} />
+        </div>
+      </div>
+      <div className="ml-16 flex max-w-[400px] flex-shrink-0 overflow-hidden rounded-md">
+        <img src={mainImage.asset.url} />
       </div>
     </div>
-    <div className="ml-16 flex max-w-[400px] flex-shrink-0 overflow-hidden rounded-md">
-      <img src={mainImage.asset.url} />
-    </div>
-  </div>
-)
+  )
+}
 
 const Pricing = ({ services, additionalServices }) => {
   return (

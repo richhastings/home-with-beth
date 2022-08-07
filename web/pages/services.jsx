@@ -11,15 +11,11 @@ import { PortableText } from '@portabletext/react'
 const Index = ({ data }) => {
   const { allService, allAdditionalService, allLockup } = data
   return (
-    <Layout
-      hero={<Hero short title="Services" />}
-      darkNavigation
-      overlayedNavigation
-    >
+    <Layout hero={<Hero short title="Services" />}>
       <div className="text-center">
         <Container size="narrow">
           <Heading>{allLockup[0].title}</Heading>
-          <div className="prose mt-5 max-w-none font-body">
+          <div className="prose mt-4 max-w-none font-body">
             <PortableText value={allLockup[0].descriptionRaw} />
           </div>
         </Container>

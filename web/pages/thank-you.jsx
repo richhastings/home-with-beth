@@ -9,11 +9,7 @@ import classNames from 'classnames'
 const Index = ({ data }) => {
   const [agreed, setAgreed] = useState(false)
   return (
-    <Layout
-      hero={<Hero title="Thank you" short />}
-      darkNavigation
-      overlayedNavigation
-    >
+    <Layout hero={<Hero title="Thank you" short />}>
       <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
         <div className="relative mx-auto max-w-3xl">
           <div className="prose max-w-none font-body">

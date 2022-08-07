@@ -24,7 +24,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
     function ({ addVariant }) {
-      addVariant('child', '& *')
+      addVariant('child', '& > *')
       addVariant('child-hover', '&:hover *')
     },
   ],
