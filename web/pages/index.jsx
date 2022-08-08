@@ -12,7 +12,7 @@ import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const { allPost, allLockup } = data
-  const holding = true
+  const holding = false
 
   if (holding) return <Holding />
 
