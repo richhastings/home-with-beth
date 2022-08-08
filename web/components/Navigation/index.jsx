@@ -25,8 +25,8 @@ const Navigation = ({ background = 'champagne' }) => {
                 </a>
               </Link>
               {primaryLinks &&
-                primaryLinks.map((item) => (
-                  <Link href={item.url}>
+                primaryLinks.map((item, i) => (
+                  <Link key={i} href={item.url}>
                     <a className={`font-body text-white`}>{item.label}</a>
                   </Link>
                 ))}

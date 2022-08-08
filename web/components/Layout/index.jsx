@@ -3,7 +3,7 @@ import Footer from '../Footer'
 import Container from '../Container'
 import HypeStrip from '../HypeStrip'
 
-const Layout = ({ children, navigationBackground, size, hero }) => (
+const Layout = ({ children, navigationBackground, size, hero, noHype }) => (
   <div className="flex min-h-screen flex-col justify-between">
     <div>
       <Navigation background={navigationBackground} />
@@ -13,7 +13,7 @@ const Layout = ({ children, navigationBackground, size, hero }) => (
           {children}
         </main>
       </Container>
-      <HypeStrip />
+      {!noHype && <HypeStrip />}
     </div>
     <Footer />
   </div>

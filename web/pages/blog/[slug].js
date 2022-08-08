@@ -1,12 +1,13 @@
-import { gql } from '@apollo/client'
 import { addApolloState, initializeApollo } from '../../data/apollo'
 import client from '../../client'
 import { PortableText } from '@portabletext/react'
 import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../../components/Layout'
-import Container from '../../components/Container'
 import Heading from '../../components/Heading'
-import { allPostsQuery, blogPageQuery } from '../../data/queries'
+import Share from '../../components/Share'
+import Grid from '../../components/Grid'
+import ErrorComponent from '../../components/Error'
+import { indexPageQuery, blogPageQuery } from '../../data/queries'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -30,14 +31,17 @@ const ptComponents = {
 }
 
 const Post = (props) => {
-  const { title = 'Missing title', bodyRaw = [] } = props
+  const { title, bodyRaw = [], slug, morePosts } = props
+  console.log(345, morePosts)
+  if (!title || !bodyRaw) return <ErrorComponent />
   return (
     <Layout navigationBackground="white" size="narrow">
       <Heading>{title}</Heading>
       <div className="prose !mt-[30px] max-w-none font-body">
         <PortableText value={bodyRaw} components={ptComponents} />
       </div>
-      <p>SHARING FUNCTIONS HERE</p>
+      <Share url={slug.current} />
+      <Grid title="Latest posts" items={morePosts} />
     </Layout>
   )
 }
@@ -49,30 +53,14 @@ export async function getServerSideProps(context) {
     variables: { slug: { current: { eq: context.params.slug } } },
   })
 
+  const morePosts = await apolloClient.query({
+    query: indexPageQuery,
+  })
+
   const documentProps = addApolloState(apolloClient, {
-    props: { ...data.allPost[0] },
+    props: { ...data.allPost[0], morePosts: morePosts.data.allPost },
   })
   return { props: { ...documentProps.props } }
 }
-
-// export async function getStaticPaths() {
-//   const apolloClient = initializeApollo()
-
-//   const posts = await apolloClient.query({
-//     query: allPostsQuery,
-//     variables: {},
-//   })
-
-//   const paths = posts.data.allPost.map((post) => ({
-//     params: {
-//       slug: post.slug.current,
-//     },
-//   }))
-
-//   return {
-//     paths,
-//     fallback: true,
-//   }
-// }
 
 export default Post

@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import Split from '../components/Split'
+import Holding from '../components/Holding'
 import { indexPageQuery } from '../data/queries'
 import { PortableText } from '@portabletext/react'
 // import axios from 'axios'
@@ -11,6 +12,10 @@ import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const { allPost, allLockup } = data
+  const holding = true
+
+  if (holding) return <Holding />
+
   return (
     <>
       <NextSeo title="Home with Beth" />
