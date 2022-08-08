@@ -18,11 +18,11 @@ function MyApp({ Component, pageProps }) {
             'Interior styling and design in the heart of Sherwood Forest in Nottinghamshire, UK.',
           images: [
             {
-              url: 'https://homewithbeth.co.uk/meta/og.jpg',
+              url: 'https://staging.homewithbeth.co.uk/meta/og.jpg',
               width: 800,
               height: 600,
               alt: 'Home with Beth',
-              type: 'image/jpg',
+              type: 'image/jpeg',
             },
           ],
           site_name: 'Home with Beth',
