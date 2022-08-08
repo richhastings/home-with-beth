@@ -6,16 +6,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en-US" dir="ltr">
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="crossOrigin"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;700&display=swap"
-            rel="stylesheet"
-          />
           <script
             async
             defer
