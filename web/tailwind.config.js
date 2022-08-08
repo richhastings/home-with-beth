@@ -7,7 +7,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       display: ['Arsenica', 'serif'],
-      body: ['Raleway', 'sans-serif'],
+      body: ['"Raleway"', 'sans-serif'],
     },
     colors: {
       current: 'currentColor',
