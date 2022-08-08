@@ -15,14 +15,14 @@ function MyApp({ Component, pageProps }) {
           url: 'https://www.homewithbeth.co.uk/',
           title: 'Home with Beth',
           description:
-            'Home with Beth. Interior styling and design in the heart of Sherwood Forest in Nottinghamshire, UK.',
+            'Interior styling and design in the heart of Sherwood Forest in Nottinghamshire, UK.',
           images: [
             {
-              url: 'https://www.homewithbeth.co.uk/meta/og.jpg',
+              url: 'https://homewithbeth.co.uk/meta/og.jpg',
               width: 800,
               height: 600,
               alt: 'Home with Beth',
-              type: 'image/jpeg',
+              type: 'image/jpg',
             },
           ],
           site_name: 'Home with Beth',
