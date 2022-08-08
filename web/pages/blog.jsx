@@ -3,14 +3,17 @@ import Layout from '../components/Layout'
 import { blogLandingPageQuery } from '../data/queries'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
-import HypeStrip from '../components/HypeStrip'
+import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const { allPost } = data
   return (
-    <Layout hero={<Hero short title="Blog" />}>
-      <Grid items={allPost} />
-    </Layout>
+    <>
+      <NextSeo title="Home with Beth | Blog" />
+      <Layout hero={<Hero short title="Blog" />}>
+        <Grid items={allPost} />
+      </Layout>
+    </>
   )
 }
 

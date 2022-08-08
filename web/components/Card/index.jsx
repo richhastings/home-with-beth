@@ -19,7 +19,7 @@ const Card = ({ title, description, mainImage, slug }) => (
             .auto('format')}
           alt=""
         />
-        <p className="font-bold">{title}</p>
+        <p className="font-body text-xl font-bold">{title}</p>
         <p className="">{description}</p>
       </div>
     </a>

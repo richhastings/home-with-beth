@@ -4,15 +4,19 @@ import { aboutPageQuery } from '../data/queries'
 import Hero from '../components/Hero'
 import Split from '../components/Split'
 import { PortableText } from '@portabletext/react'
+import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const { allLockup } = data
   return (
-    <Layout hero={<Hero short title="About" />}>
-      <Split heading={allLockup[0].title} imgUrl="/images/beth.jpg">
-        <PortableText value={allLockup[0].descriptionRaw} />
-      </Split>
-    </Layout>
+    <>
+      <NextSeo title="Home with Beth | About" />
+      <Layout hero={<Hero short title="About" />}>
+        <Split heading={allLockup[0].title} imgUrl="/images/beth.jpg">
+          <PortableText value={allLockup[0].descriptionRaw} />
+        </Split>
+      </Layout>
+    </>
   )
 }
 

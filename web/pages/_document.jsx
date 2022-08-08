@@ -6,7 +6,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en-US" dir="ltr">
         <Head>
-          {/* <meta charSet="utf-8" /> */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -34,7 +33,7 @@ class MyDocument extends Document {
               rel="icon"
               type="image/png"
               sizes={`${size}x${size}`}
-              href={`/meta/favicon-${size}x${size}.png`}
+              href={`/meta/favicon-${size}.png`}
             />
           ))}
 

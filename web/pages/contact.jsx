@@ -8,43 +8,47 @@ import Field from '../components/Field'
 import { contactPageQuery } from '../data/queries'
 import { useState } from 'react'
 import { PortableText } from '@portabletext/react'
+import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const [agreed, setAgreed] = useState(false)
   const { allLockup } = data
   console.log(data)
   return (
-    <Layout hero={<Hero title="Contact" short />}>
-      <Container size="narrow">
-        <div className="text-center">
-          <Heading>{allLockup[0].title}</Heading>
-          <div className="prose mt-4 max-w-none font-body">
-            <PortableText value={allLockup[0].descriptionRaw} />
+    <>
+      <NextSeo title="Home with Beth | Contact" />
+      <Layout hero={<Hero title="Contact" short />}>
+        <Container size="narrow">
+          <div className="text-center">
+            <Heading>{allLockup[0].title}</Heading>
+            <div className="prose mt-4 max-w-none font-body">
+              <PortableText value={allLockup[0].descriptionRaw} />
+            </div>
           </div>
-        </div>
-        <div>
-          <div className="mt-12">
-            <form
-              action="/thank-you"
-              name="contact"
-              method="POST"
-              className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-              data-netlify="true"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <Field name="first-name" label="First name" />
-              <Field name="last-name" label="Last name" />
-              <Field type="email" name="email" label="Email address" />
-              <Field type="textarea" name="message" label="Message" />
+          <div>
+            <div className="mt-12">
+              <form
+                action="/thank-you"
+                name="contact"
+                method="POST"
+                className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
+                data-netlify="true"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <Field name="first-name" label="First name" />
+                <Field name="last-name" label="Last name" />
+                <Field type="email" name="email" label="Email address" />
+                <Field type="textarea" name="message" label="Message" />
 
-              <div className="col-span-3 text-center">
-                <Button type="submit">Submit</Button>
-              </div>
-            </form>
+                <div className="col-span-3 text-center">
+                  <Button type="submit">Submit</Button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      </Container>
-    </Layout>
+        </Container>
+      </Layout>
+    </>
   )
 }
 

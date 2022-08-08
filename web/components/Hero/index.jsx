@@ -13,7 +13,7 @@ const Hero = ({ title, subtitle, short, imgUrl }) => (
         <img
           className="h-full w-full object-cover opacity-50"
           src={imgUrl}
-          alt="People working on laptops"
+          alt="A beautiful curated home."
         />
       </div>
     )}
