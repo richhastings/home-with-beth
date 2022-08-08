@@ -1,43 +1,43 @@
 import { addApolloState, initializeApollo } from '../data/apollo'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import Grid from '../components/Grid'
+import Heading from '../components/Heading'
 import Split from '../components/Split'
-import HypeStrip from '../components/HypeStrip'
+import Container from '../components/Container'
 import Pricing from '../components/Pricing'
-import { indexPageQuery } from '../data/queries'
+import { allServicesQuery } from '../data/queries'
+import { PortableText } from '@portabletext/react'
+import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
-  const { allPost, allProject } = data
-  // return (
-  //   <Layout>
-  //     <Hero tight title="Services" />
-  //     <Split heading="How can I help?">
-  //       <p>
-  //         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-  //         magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-  //         alias eos accusantium vel quia officia ipsa nemo exercitationem
-  //         asperiores!
-  //       </p>
-  //       <p>
-  //         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
-  //         magni sunt rerum odio eos est odit voluptates! Sunt in, suscipit,
-  //         alias eos accusantium vel quia officia ipsa nemo exercitationem
-  //         asperiores!
-  //       </p>
-  //     </Split>
+  const { allService, allAdditionalService, allLockup } = data
+  return (
+    <>
+      <NextSeo title="Home with Beth | Services" />
+      <Layout hero={<Hero short title="Services" />}>
+        <div className="text-center">
+          <Container size="narrow">
+            <Heading>{allLockup[0].title}</Heading>
+            <div className="prose mt-4 max-w-none font-body">
+              <PortableText value={allLockup[0].descriptionRaw} />
+            </div>
+          </Container>
+        </div>
 
-  //     <Pricing />
-  //     <HypeStrip />
-  //   </Layout>
-  // )
-  return null
+        <Pricing
+          services={allService}
+          additionalServices={allAdditionalService}
+        />
+      </Layout>
+    </>
+  )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
-    query: indexPageQuery,
+    query: allServicesQuery,
+    variables: { key: { eq: 'services' } },
   })
 
   const documentProps = addApolloState(apolloClient, {

@@ -1,6 +1,6 @@
 export default {
-  name: 'project',
-  title: 'Project Post',
+  name: 'service',
+  title: 'Service',
   type: 'document',
   fields: [
     {
@@ -9,13 +9,9 @@ export default {
       type: 'string',
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
+      name: 'price',
+      title: 'Price',
+      type: 'number',
     },
     {
       name: 'mainImage',
@@ -24,17 +20,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
-    },
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
     },
     {
       name: 'body',

@@ -7,16 +7,16 @@ module.exports = {
     extend: {},
     fontFamily: {
       display: ['Arsenica', 'serif'],
-      body: ['Raleway', 'sans-serif'],
+      body: ['"Raleway"', 'sans-serif'],
     },
     colors: {
       current: 'currentColor',
       champagne: '#F7E7CE',
       white: '#FFF',
       black: '#222',
-      green: '#648B80',
-      darkgreen: '#437567',
-      purple: '#9693AC',
+      lightgrey: '#aaa',
+      lightestgrey: '#eee',
+      darkgrey: '#444',
     },
   },
   plugins: [
@@ -24,7 +24,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
     function ({ addVariant }) {
-      addVariant('child', '& *')
+      addVariant('child', '& > *')
       addVariant('child-hover', '&:hover *')
     },
   ],

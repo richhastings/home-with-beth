@@ -1,13 +1,21 @@
-// import Navigation from '../Navigation'
-// import Footer from '../Footer'
+import Navigation from '../Navigation'
+import Footer from '../Footer'
+import Container from '../Container'
+import HypeStrip from '../HypeStrip'
 
-const Layout = ({ children, overlayedNavigation }) => (
+const Layout = ({ children, navigationBackground, size, hero, noHype }) => (
   <div className="flex min-h-screen flex-col justify-between">
     <div>
-      {/* <Navigation overlayed={overlayedNavigation} /> */}
-      <main>{children}</main>
+      <Navigation background={navigationBackground} />
+      {hero && <div className="mb-8 md:mb-16">{hero}</div>}
+      <Container size={size}>
+        <main className="mb-8 space-y-8 md:mb-16 md:space-y-16">
+          {children}
+        </main>
+      </Container>
+      {!noHype && <HypeStrip />}
     </div>
-    {/* <Footer /> */}
+    <Footer />
   </div>
 )
 

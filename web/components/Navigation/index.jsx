@@ -4,20 +4,39 @@ import { HomeIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 import { primaryLinks, secondaryLinks } from './links'
 import SocialLinks from '../SocialLinks'
+import Container from '../Container'
+import Link from 'next/link'
 
-const Navigation = ({ overlayed }) => {
-  const wrapperClasses = overlayed
-    ? 'absolute z-[1] w-full text-white'
-    : 'bg-champagne'
+const Navigation = ({ background = 'champagne' }) => {
+  const backgroundClassMap = {
+    transparent: 'absolute z-[1] w-full text-white',
+    champagne: 'bg-champagne text-black',
+    white: 'bg-white text-black mb-4 sm:mb-8 lg:mb-16',
+  }
   return (
-    <Disclosure as="nav" className={wrapperClasses}>
+    <Disclosure as="nav" className={`${backgroundClassMap[background]}`}>
       {({ open }) => (
         <>
-          <div className=" mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <Disclosure.Panel className="bg-black transition-all sm:hidden">
+            <div className="flex items-center justify-between space-y-1 px-4 py-2 pb-3">
+              <Link href="/">
+                <a>
+                  <HomeIcon className="block h-6 w-full text-white" />
+                </a>
+              </Link>
+              {primaryLinks &&
+                primaryLinks.map((item, i) => (
+                  <Link key={i} href={item.url}>
+                    <a className={`font-body text-white`}>{item.label}</a>
+                  </Link>
+                ))}
+            </div>
+          </Disclosure.Panel>
+          <Container>
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="text-gray-400 hover:bg-gray-700 inline-flex items-center justify-center rounded-md p-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="text-gray-400 hover:bg-gray-700 inline-flex items-center justify-center rounded-md hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -29,64 +48,28 @@ const Navigation = ({ overlayed }) => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:block">
                   <div className="flex gap-8 ">
-                    <a className="" href="/">
-                      <HomeIcon className="block h-6 w-6" />
-                    </a>
+                    <Link href="/">
+                      <a>
+                        <HomeIcon className="block h-6 w-6" />
+                      </a>
+                    </Link>
                     {primaryLinks &&
                       primaryLinks.length > 0 &&
                       primaryLinks.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.url}
-                          className="text-md block font-body font-bold"
-                          // aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.label}
-                        </a>
+                        <Link key={item.label} href={item.url}>
+                          <a className="text-md block font-body font-bold hover:underline">
+                            {item.label}
+                          </a>
+                        </Link>
                       ))}
                   </div>
                 </div>
               </div>
               <div className="flex gap-8">
-                {secondaryLinks &&
-                  secondaryLinks.length > 0 &&
-                  secondaryLinks.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.url}
-                      className="text-md block font-body font-bold"
-                      // aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
                 <SocialLinks />
               </div>
             </div>
-          </div>
-
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
-              {primaryLinks &&
-                secondaryLinks &&
-                [...primaryLinks, ...secondaryLinks].map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'block rounded-md px-3 py-2 text-base font-medium'
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-            </div>
-          </Disclosure.Panel>
+          </Container>
         </>
       )}
     </Disclosure>

@@ -3,21 +3,21 @@ import Layout from '../components/Layout'
 import { blogLandingPageQuery } from '../data/queries'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
-import HypeStrip from '../components/HypeStrip'
+import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const { allPost } = data
-  // return (
-  //   <Layout>
-  //     <Hero tight title="Blog" />
-  //     <Grid items={allPost} />
-  //     <HypeStrip />
-  //   </Layout>
-  // )
-  return null
+  return (
+    <>
+      <NextSeo title="Home with Beth | Blog" />
+      <Layout hero={<Hero short title="Blog" />}>
+        <Grid items={allPost} />
+      </Layout>
+    </>
+  )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: blogLandingPageQuery,

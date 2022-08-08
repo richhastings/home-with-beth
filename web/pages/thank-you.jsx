@@ -9,8 +9,7 @@ import classNames from 'classnames'
 const Index = ({ data }) => {
   const [agreed, setAgreed] = useState(false)
   return (
-    <Layout>
-      <Hero title="Thank you" tight />
+    <Layout hero={<Hero title="Thank you" short />}>
       <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
         <div className="relative mx-auto max-w-3xl">
           <div className="prose max-w-none font-body">
@@ -18,7 +17,7 @@ const Index = ({ data }) => {
           </div>
           <a
             href="/"
-            className="border-transparent hover:bg-indigo-700 focus:ring-indigo-500 mt-8 inline-flex w-full items-center justify-center rounded-md border bg-green px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="border-transparent hover:bg-indigo-700 focus:ring-indigo-500 bg-green mt-8 inline-flex w-full items-center justify-center rounded-md border px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             Go to the homepage
           </a>
@@ -28,7 +27,7 @@ const Index = ({ data }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: contactPageQuery,

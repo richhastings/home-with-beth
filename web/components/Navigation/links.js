@@ -1,9 +1,5 @@
 export const primaryLinks = [
   {
-    label: 'Projects',
-    url: '/projects',
-  },
-  {
     label: 'Services',
     url: '/services',
   },
@@ -11,9 +7,6 @@ export const primaryLinks = [
     label: 'Blog',
     url: '/blog',
   },
-]
-
-export const secondaryLinks = [
   {
     label: 'About',
     url: '/about',

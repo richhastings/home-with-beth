@@ -1,10 +1,13 @@
-import { gql } from '@apollo/client'
 import { addApolloState, initializeApollo } from '../../data/apollo'
 import client from '../../client'
 import { PortableText } from '@portabletext/react'
 import imageUrlBuilder from '@sanity/image-url'
 import Layout from '../../components/Layout'
-import { allPostsQuery, blogPageQuery } from '../../data/queries'
+import Heading from '../../components/Heading'
+import Share from '../../components/Share'
+import Grid from '../../components/Grid'
+import ErrorComponent from '../../components/Error'
+import { indexPageQuery, blogPageQuery } from '../../data/queries'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -28,54 +31,36 @@ const ptComponents = {
 }
 
 const Post = (props) => {
-  const { title = 'Missing title', categories = [], body = [] } = props
-  // return (
-  //   <Layout>
-  //     <article>
-  //       <p>{title}</p>
-  //       <div>
-  //         {categories &&
-  //           categories.length &&
-  //           categories.map((category) => category)}
-  //       </div>
-  //       <PortableText value={body} components={ptComponents} />
-  //     </article>
-  //   </Layout>
-  // )
-  return null
+  const { title, bodyRaw = [], slug, morePosts } = props
+  console.log(345, morePosts)
+  if (!title || !bodyRaw) return <ErrorComponent />
+  return (
+    <Layout navigationBackground="white" size="narrow">
+      <Heading>{title}</Heading>
+      <div className="prose !mt-[30px] max-w-none font-body">
+        <PortableText value={bodyRaw} components={ptComponents} />
+      </div>
+      <Share url={slug.current} />
+      <Grid title="Latest posts" items={morePosts} />
+    </Layout>
+  )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: blogPageQuery,
     variables: { slug: { current: { eq: context.params.slug } } },
   })
 
+  const morePosts = await apolloClient.query({
+    query: indexPageQuery,
+  })
+
   const documentProps = addApolloState(apolloClient, {
-    props: { ...data.allPost[0] },
+    props: { ...data.allPost[0], morePosts: morePosts.data.allPost },
   })
   return { props: { ...documentProps.props } }
-}
-
-export async function getStaticPaths() {
-  const apolloClient = initializeApollo()
-
-  const posts = await apolloClient.query({
-    query: allPostsQuery,
-    variables: {},
-  })
-
-  const paths = posts.data.allPost.map((post) => ({
-    params: {
-      slug: post.slug.current,
-    },
-  }))
-
-  return {
-    paths,
-    fallback: true,
-  }
 }
 
 export default Post
