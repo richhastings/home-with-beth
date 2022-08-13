@@ -8,39 +8,48 @@ import Share from '../../components/Share'
 import Grid from '../../components/Grid'
 import ErrorComponent from '../../components/Error'
 import { indexPageQuery, blogPageQuery } from '../../data/queries'
+import { format } from 'date-fns'
+import Avatar from '../../components/Avatar'
+import Container from '../../components/Container'
+import Image from 'next/image'
+import ptComponents from '../../components/ptComponents'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
-const ptComponents = {
-  types: {
-    image: ({ value }) => {
-      if (!value?.asset?._ref) {
-        return null
-      }
-      return (
-        <img
-          alt={value.alt || ' '}
-          loading="lazy"
-          src={urlFor(value).width(320).height(240).fit('max').auto('format')}
-        />
-      )
-    },
-  },
-}
-
 const Post = (props) => {
-  const { title, bodyRaw = [], slug, morePosts } = props
-  console.log(345, morePosts)
+  const { title, bodyRaw = [], slug, mainImage, morePosts } = props
   if (!title || !bodyRaw) return <ErrorComponent />
   return (
-    <Layout navigationBackground="white" size="narrow">
-      <Heading>{title}</Heading>
-      <div className="prose !mt-[30px] max-w-none font-body">
-        <PortableText value={bodyRaw} components={ptComponents} />
-      </div>
+    <Layout navigationBackground="white">
+      <Container size="narrow">
+        <div className="mb-4 font-body text-sm">
+          <span>Published by Beth</span>
+          <Avatar />
+          {' | '}
+          <time className="ml-1">{format(new Date(), 'do MMMM yyyy')}</time>
+        </div>
+        <Heading>{title}</Heading>
+        <div className="mt-4 lg:mt-8">
+          <Image
+            placeholder="blur"
+            blurDataURL={urlFor(mainImage.asset.url)
+              .width(1600)
+              .height(900)
+              .toString()}
+            src={urlFor(mainImage.asset.url).width(1600).height(900).toString()}
+            width={1600}
+            height={900}
+            sizes="(max-width:900px) calc(100vw - 32px), 832px"
+          />
+        </div>
+        <div className="prose !mt-[30px] max-w-none font-body">
+          <PortableText value={bodyRaw} components={ptComponents} />
+        </div>
+      </Container>
       <Share url={slug.current} />
+      <hr />
       <Grid title="Latest posts" items={morePosts} />
     </Layout>
   )

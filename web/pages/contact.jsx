@@ -6,12 +6,10 @@ import Heading from '../components/Heading'
 import Button from '../components/Button'
 import Field from '../components/Field'
 import { contactPageQuery } from '../data/queries'
-import { useState } from 'react'
 import { PortableText } from '@portabletext/react'
 import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
-  const [agreed, setAgreed] = useState(false)
   const { allLockup } = data
   console.log(data)
   return (

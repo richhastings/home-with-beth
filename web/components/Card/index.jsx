@@ -1,26 +1,35 @@
 import client from '../../client'
 import imageUrlBuilder from '@sanity/image-url'
 import Link from 'next/link'
+import { format } from 'date-fns'
+import Image from 'next/image'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
-const Card = ({ title, description, mainImage, slug }) => (
+const Card = ({ title, mainImage, slug, publishedAt }) => (
   <Link href={`/blog/${slug.current}`}>
-    <a className="rounded-md border border-lightgrey font-body hover:opacity-70">
-      <div className="p-4">
-        <img
-          className="mb-3 rounded-sm border border-lightgrey"
-          src={urlFor(mainImage.asset.url)
+    <a className="overflow-hidden rounded-md border border-lightgrey font-body hover:opacity-70">
+      <div className="mb-3">
+        <Image
+          placeholder="blur"
+          blurDataURL={urlFor(mainImage.asset.url)
             .width(1600)
             .height(900)
-            .fit('max')
-            .auto('format')}
-          alt=""
+            .toString()}
+          alt={`Thumbnail relating to an article titled "${title}"`}
+          src={urlFor(mainImage.asset.url).width(1600).height(900).toString()}
+          width={1600}
+          height={900}
+          sizes="(max-width: 1024px) calc(100vw - 32px), (max-width:1280px) calc(33vw - 96px), 393px"
         />
+      </div>
+      <div className="p-4 pt-0">
         <p className="font-body text-xl font-bold">{title}</p>
-        <p className="">{description}</p>
+        <time className="font-body text-sm">
+          {format(new Date(publishedAt), 'do MMMM yyyy')}
+        </time>
       </div>
     </a>
   </Link>

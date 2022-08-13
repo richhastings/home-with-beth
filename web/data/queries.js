@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 export const indexPageQuery = gql`
   query indexPageQueryquery($key: StringFilter) {
-    allPost(limit: 3, sort: { _createdAt: ASC }) {
+    allPost(limit: 3, sort: { _createdAt: DESC }) {
       _createdAt
       title
       mainImage {
@@ -13,6 +13,7 @@ export const indexPageQuery = gql`
       slug {
         current
       }
+      publishedAt
     }
     allLockup(where: { key: $key }) {
       title
@@ -33,6 +34,7 @@ export const blogLandingPageQuery = gql`
           url
         }
       }
+      publishedAt
     }
   }
 `

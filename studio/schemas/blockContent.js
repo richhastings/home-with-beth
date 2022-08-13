@@ -61,5 +61,6 @@ export default {
       type: 'image',
       options: {hotspot: true},
     },
-  ],
+    {title: 'Gallery', type: 'gallery'}
+  ]
 }

@@ -9,6 +9,7 @@ import { indexPageQuery } from '../data/queries'
 import { PortableText } from '@portabletext/react'
 // import axios from 'axios'
 import { NextSeo } from 'next-seo'
+import Image from 'next/image'
 
 const Index = ({ data }) => {
   const { allPost, allLockup } = data
@@ -33,9 +34,22 @@ const Index = ({ data }) => {
           heading={allLockup[0].title}
           ctaUrl="/services"
           ctaText="View all services"
+          imgComponent={
+            <Image
+              placeholder="blur"
+              blurDataURL="/images/home-services.jpg"
+              src="/images/home-services.jpg"
+              alt="A curated arrangement of decorative items on a tabletop"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), (max-width:1280px) calc(50vw - 128px), 574px"
+            />
+          }
         >
           <PortableText value={allLockup[0].descriptionRaw} />
         </Split>
+
+        <hr />
 
         <Grid
           title="Latest posts"

@@ -20,16 +20,20 @@ const Navigation = ({ background = 'champagne' }) => {
           <Disclosure.Panel className="bg-black transition-all sm:hidden">
             <div className="flex items-center justify-between space-y-1 px-4 py-2 pb-3">
               <Link href="/">
-                <a>
+                <a className="w-10">
                   <HomeIcon className="block h-6 w-full text-white" />
                 </a>
               </Link>
-              {primaryLinks &&
-                primaryLinks.map((item, i) => (
-                  <Link key={i} href={item.url}>
-                    <a className={`font-body text-white`}>{item.label}</a>
-                  </Link>
-                ))}
+              <div className="space-x-6">
+                {primaryLinks &&
+                  primaryLinks.map((item, i) => (
+                    <Link key={i} href={item.url}>
+                      <a className={`text-center font-body text-white`}>
+                        {item.label}
+                      </a>
+                    </Link>
+                  ))}
+              </div>
             </div>
           </Disclosure.Panel>
           <Container>

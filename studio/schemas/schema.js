@@ -27,5 +27,37 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
+    {
+      name: 'gallery',
+      type: 'object',
+      title: 'Gallery',
+      fields: [
+        {name: 'images', title: 'Images', type: 'images'},
+        {
+          name: 'display',
+          type: 'string',
+          title: 'Display as',
+          description: 'How should we display these images?',
+          options: {
+            list: [
+              { title: 'Stacked', value: 'stacked' },
+              { title: 'Grid', value: 'grid' },
+            ],
+            layout: 'radio', // <-- defaults to 'dropdown'
+          },
+        },
+      ],
+    },
+    {
+      name: 'images',
+      type: 'array',
+      title: 'Images',
+      of: [
+        {type: 'image'},
+      ],
+      options: {
+        layout: 'grid',
+      },
+    },
   ]),
 })
