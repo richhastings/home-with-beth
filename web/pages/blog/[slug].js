@@ -12,7 +12,7 @@ import { format } from 'date-fns'
 import Avatar from '../../components/Avatar'
 import Container from '../../components/Container'
 import Image from 'next/image'
-import ptComponents from './ptComponents'
+import ptComponents from '../../components/ptComponents'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
