@@ -61,62 +61,6 @@ export default {
       type: 'image',
       options: {hotspot: true},
     },
-    {
-      name: 'youtube',
-      type: 'object',
-      title: 'YouTube Embed',
-      fields: [
-        {
-          name: 'url',
-          type: 'url',
-          title: 'YouTube video URL'
-        }
-      ]
-    },
-    {
-      name: 'gallery',
-      type: 'object',
-      title: 'Gallery',
-      fields: [
-        {
-          name: 'images',
-          type: 'array',
-          title: 'Images',
-          of: [
-            {
-              name: 'image',
-              type: 'image',
-              title: 'Image',
-              options: {
-                hotspot: true,
-              },
-              fields: [
-                {
-                  name: 'alt',
-                  type: 'string',
-                  title: 'Alternative text',
-                },
-              ],
-            },
-          ],
-          options: {
-            layout: 'grid',
-          },
-        },
-        {
-          name: 'display',
-          type: 'string',
-          title: 'Display as',
-          description: 'How should we display these images?',
-          options: {
-            list: [
-              { title: 'Stacked', value: 'stacked' },
-              { title: 'Grid', value: 'grid' },
-            ],
-            layout: 'radio', // <-- defaults to 'dropdown'
-          },
-        },
-      ],
-    }
+    {title: 'Gallery', type: 'gallery'}
   ]
 }

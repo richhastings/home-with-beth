@@ -13,7 +13,7 @@ import Image from 'next/image'
 
 const Index = ({ data }) => {
   const { allPost, allLockup } = data
-  const holding = false
+  const holding = true
 
   if (holding) return <Holding />
 
