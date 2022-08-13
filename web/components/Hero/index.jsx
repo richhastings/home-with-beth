@@ -1,5 +1,6 @@
 import { ArrowDownIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Heading from '../Heading'
 
@@ -18,21 +19,29 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
   return (
     <div
       className={classNames(
-        'relative bg-champagne text-center sm:overflow-hidden',
-        short ? 'pb-4 sm:pt-8 sm:pb-12' : 'h-screen'
+        'relative  text-center sm:overflow-hidden',
+        short
+          ? 'h-20 bg-champagne pb-4 sm:pt-8 sm:pb-12 md:h-40 lg:h-48'
+          : 'h-screen'
       )}
     >
       {imgUrl && (
-        <div className="absolute inset-0 bg-black">
-          <img
-            className="h-full w-full object-cover opacity-50"
-            src={imgUrl}
-            alt="A beautiful curated home."
-          />
+        <div className="relative h-full bg-black">
+          <div className="absolute inset-0  opacity-50">
+            <Image
+              placeholder="blur"
+              blurDataURL={imgUrl}
+              layout="fill"
+              objectFit="cover"
+              sizes="(max-width: 768px) 156.25vh, 100vw"
+              src={imgUrl}
+              alt="A beautiful curated home."
+            />
+          </div>
         </div>
       )}
       <div
-        className={`relative flex h-full flex-col items-center justify-center ${
+        className={`absolute top-1/2 z-[1] flex w-full -translate-y-1/2 flex-col items-center justify-center ${
           imgUrl && 'text-white'
         }`}
       >
@@ -46,7 +55,7 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
         </div>
       </div>
       {imgUrl && !hasScrolled && (
-        <div className="absolute bottom-4 left-1/2 translate-x-[-50%] text-white">
+        <div className="absolute bottom-16 left-1/2 translate-x-[-50%] text-white">
           <div className="animate-bounce">
             <ArrowDownIcon width={32} />
           </div>

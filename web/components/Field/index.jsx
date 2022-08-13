@@ -10,14 +10,14 @@ const Field = ({ name, label, type = 'text' }) => {
             id={name}
             name={name}
             rows={4}
-            className="block w-full rounded border-black p-3 px-4"
+            className="block w-full rounded border-lightgrey p-3 px-4"
           />
         ) : (
           <input
             type="text"
             name={name}
             id={name}
-            className="block w-full rounded border-black p-3 px-4"
+            className="block w-full rounded border-lightgrey p-3 px-4"
           />
         )}
       </div>
