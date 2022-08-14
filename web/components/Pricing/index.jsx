@@ -31,7 +31,7 @@ const PricingBlock = ({ title, bodyRaw, mainImage, price }) => {
         <div className="prose font-body font-bold">{formattedPrice}</div>
       </Heading>
       <div className="items-center justify-between lg:flex">
-        <div className="order-2 my-4 w-full overflow-hidden rounded-md border border-lightgrey lg:my-0 lg:ml-8 lg:max-w-[400px]">
+        <div className="order-2 my-4 mx-auto w-full max-w-[720px] overflow-hidden rounded-md border border-lightgrey lg:my-0 lg:ml-8 lg:max-w-[400px]">
           <Image
             placeholder="blur"
             blurDataURL={urlFor(mainImage.asset.url)

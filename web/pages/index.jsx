@@ -5,7 +5,7 @@ import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import Split from '../components/Split'
 import Holding from '../components/Holding'
-import { indexPageQuery } from '../data/queries'
+import { indexPageQuery, indexPageQuery2 } from '../data/queries'
 import { PortableText } from '@portabletext/react'
 // import axios from 'axios'
 import { NextSeo } from 'next-seo'
@@ -89,7 +89,7 @@ export async function getServerSideProps() {
   })
 
   const about = await apolloClient.query({
-    query: indexPageQuery,
+    query: indexPageQuery2,
     variables: { key: { eq: 'about' } },
   })
 

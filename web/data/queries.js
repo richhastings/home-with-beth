@@ -43,6 +43,7 @@ export const blogLandingPageQuery = gql`
           url
         }
       }
+      bodyRaw
       publishedAt
     }
   }
