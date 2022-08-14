@@ -3,24 +3,17 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import { contactPageQuery } from '../data/queries'
 import { useState } from 'react'
-import { Switch } from '@headlessui/react'
-import classNames from 'classnames'
+import Button from '../components/Button'
 
 const Index = ({ data }) => {
-  const [agreed, setAgreed] = useState(false)
   return (
-    <Layout hero={<Hero title="Thank you" short />}>
-      <div className="overflow-hidden bg-white py-16 px-4 sm:px-6 lg:px-8 lg:py-24">
-        <div className="relative mx-auto max-w-3xl">
-          <div className="prose max-w-none font-body">
-            Thank you for contacting me.
+    <Layout noHype hero={<Hero title="Thank you" short />}>
+      <div className="overflow-hidden bg-white">
+        <div className="relative mx-auto max-w-3xl text-center">
+          <div className="prose mb-8 max-w-none px-4 font-alt text-3xl">
+            Thank you for contacting me, I'll be in touch soon!
           </div>
-          <a
-            href="/"
-            className="border-transparent hover:bg-indigo-700 focus:ring-indigo-500 bg-green mt-8 inline-flex w-full items-center justify-center rounded-md border px-6 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
-          >
-            Go to the homepage
-          </a>
+          <Button href="/">Back to homepage</Button>
         </div>
       </div>
     </Layout>

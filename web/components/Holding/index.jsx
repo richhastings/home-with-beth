@@ -1,5 +1,4 @@
 import Countdown, { CountdownRendererFn } from 'react-countdown'
-import Heading from '../Heading'
 export const launchDate = () => new Date('2022-08-15T09:00:00')
 
 const renderer = ({ hours, minutes, seconds, completed }) => {

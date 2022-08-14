@@ -27,7 +27,7 @@ const Index = ({ data }) => {
             <div className="mt-12">
               <form
                 action="/thank-you"
-                name="contact"
+                name="enquiry"
                 method="POST"
                 className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
                 data-netlify="true"
