@@ -30,7 +30,7 @@ const Index = ({ data }) => {
                 name="enquiry"
                 method="POST"
                 className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-                data-netlify="true"
+                netlify
               >
                 <input type="hidden" name="form-name" value="enquiry" />
                 <input
