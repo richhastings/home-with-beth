@@ -22,6 +22,15 @@ export const indexPageQuery = gql`
   }
 `
 
+export const indexPageQuery2 = gql`
+  query indexPageQueryquery($key: StringFilter) {
+    allLockup(where: { key: $key }) {
+      title
+      descriptionRaw
+    }
+  }
+`
+
 export const blogLandingPageQuery = gql`
   query blogLandingPageQuery {
     allPost {
@@ -34,6 +43,7 @@ export const blogLandingPageQuery = gql`
           url
         }
       }
+      bodyRaw
       publishedAt
     }
   }

@@ -36,6 +36,7 @@ const Index = ({ data }) => {
                 <Field name="first-name" label="First name" />
                 <Field name="last-name" label="Last name" />
                 <Field type="email" name="email" label="Email address" />
+                <Field type="select" name="product" label="Enquiry" />
                 <Field type="textarea" name="message" label="Message" />
 
                 <div className="col-span-3 text-center">

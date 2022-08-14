@@ -8,10 +8,6 @@ export const primaryLinks = [
     url: '/blog',
   },
   {
-    label: 'About',
-    url: '/about',
-  },
-  {
     label: 'Contact',
     url: '/contact',
   },
