@@ -26,7 +26,7 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
       )}
     >
       {imgUrl && (
-        <div className="relative h-full bg-black">
+        <div className="relative h-full bg-[#000]">
           <div className="absolute inset-0  opacity-50">
             <Image
               placeholder="blur"
@@ -46,9 +46,9 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
         }`}
       >
         <div>
-          <Heading size="lg">{title}</Heading>
+          <Heading size={imgUrl ? 'xl' : 'lg'}>{title}</Heading>
           {subtitle && (
-            <p className="mx-auto mt-6 max-w-lg text-center font-body text-xl font-bold text-white sm:max-w-3xl">
+            <p className="mx-auto mt-6 max-w-lg text-center font-alt text-xl font-bold text-white sm:max-w-3xl sm:text-2xl lg:text-4xl">
               {subtitle}
             </p>
           )}

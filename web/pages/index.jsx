@@ -11,8 +11,9 @@ import { PortableText } from '@portabletext/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 
-const Index = ({ data }) => {
+const Index = ({ data, about }) => {
   const { allPost, allLockup } = data
+
   const holding = false
 
   if (holding) return <Holding />
@@ -30,6 +31,23 @@ const Index = ({ data }) => {
           />
         }
       >
+        <Split
+          heading={about.data.allLockup[0].title}
+          imgComponent={
+            <Image
+              placeholder="blur"
+              blurDataURL="/images/about.jpg"
+              src="/images/about.jpg"
+              alt="Headshot of Beth and Nina the greyhound"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), (max-width:1280px) calc(50vw - 128px), 574px"
+            />
+          }
+        >
+          <PortableText value={about.data.allLockup[0].descriptionRaw} />
+        </Split>
+        <hr />
         <Split
           heading={allLockup[0].title}
           ctaUrl="/services"
@@ -70,8 +88,13 @@ export async function getServerSideProps() {
     variables: { key: { eq: 'home' } },
   })
 
+  const about = await apolloClient.query({
+    query: indexPageQuery,
+    variables: { key: { eq: 'about' } },
+  })
+
   const documentProps = addApolloState(apolloClient, {
-    props: { data },
+    props: { data, about },
   })
   return { props: { ...documentProps.props } }
 }

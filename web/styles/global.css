@@ -2,9 +2,18 @@
 
 @font-face {
   font-family: 'Arsenica';
-  src: url('/font/ArsenicaTrial-Extrabold.woff2') format('woff2'),
-    url('/font/ArsenicaTrial-Extrabold.woff') format('woff');
+  src: url('/font/Arsenica-Extrabold.woff2') format('woff2'),
+    url('/font/Arsenica-Extrabold.woff') format('woff');
   font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArsenicaAntiqua';
+  src: url('/font/Arsenica-Antiqua-Thin.woff2') format('woff2'),
+    url('/font/Arsenica-Antiqua-Thin.woff') format('woff');
+  font-weight: thin;
   font-style: normal;
   font-display: swap;
 }
