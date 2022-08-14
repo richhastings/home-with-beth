@@ -32,7 +32,7 @@ const Index = ({ data }) => {
                 className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
                 data-netlify="true"
               >
-                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="form-name" value="enquiry" />
                 <Field name="first-name" label="First name" />
                 <Field name="last-name" label="Last name" />
                 <Field type="email" name="email" label="Email address" />
