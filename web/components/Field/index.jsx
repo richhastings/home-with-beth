@@ -1,4 +1,4 @@
-const Field = ({ name, label, type = 'text' }) => {
+const Field = ({ name, label, type = 'text', handleChange }) => {
   const fieldMap = {
     textarea: (
       <textarea
@@ -6,6 +6,7 @@ const Field = ({ name, label, type = 'text' }) => {
         name={name}
         rows={4}
         className="block w-full rounded border-lightgrey p-3 px-4 font-body"
+        onChange={handleChange}
       />
     ),
     select: (
@@ -13,6 +14,7 @@ const Field = ({ name, label, type = 'text' }) => {
         className="block w-full rounded border-lightgrey p-3 px-4 font-body"
         name={name}
         id={name}
+        onChange={handleChange}
       >
         <option value="Inspire me!">Inspire me!</option>
         <option value="Personal shopping">Personal shopping</option>
@@ -33,6 +35,7 @@ const Field = ({ name, label, type = 'text' }) => {
             name={name}
             id={name}
             className="block w-full rounded border-lightgrey p-3 px-4 font-body"
+            onChange={handleChange}
           />
         )}
       </div>

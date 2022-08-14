@@ -8,10 +8,10 @@ import Field from '../components/Field'
 import { contactPageQuery } from '../data/queries'
 import { PortableText } from '@portabletext/react'
 import { NextSeo } from 'next-seo'
+import { NetlifyForm } from 'react-netlify-forms'
 
 const Index = ({ data }) => {
   const { allLockup } = data
-  console.log(data)
   return (
     <>
       <NextSeo title="Home with Beth | Contact" />
@@ -25,7 +25,45 @@ const Index = ({ data }) => {
           </div>
           <div>
             <div className="mt-12">
-              <form
+              <NetlifyForm name="enquiry" action="/thank-you">
+                {({ handleChange, success, error }) => (
+                  <>
+                    <Field
+                      name="firstname"
+                      label="First name"
+                      handleChange={handleChange}
+                    />
+                    <Field
+                      name="lastname"
+                      label="Last name"
+                      handleChange={handleChange}
+                    />
+                    <Field
+                      type="email"
+                      name="email"
+                      label="Email address"
+                      handleChange={handleChange}
+                    />
+                    <Field
+                      type="select"
+                      name="product"
+                      label="Enquiry"
+                      handleChange={handleChange}
+                    />
+                    <Field
+                      type="textarea"
+                      name="message"
+                      label="Message"
+                      handleChange={handleChange}
+                    />
+
+                    <div className="col-span-3 text-center">
+                      <Button type="submit">Submit</Button>
+                    </div>
+                  </>
+                )}
+              </NetlifyForm>
+              {/* <form
                 action="/thank-you"
                 name="enquiry"
                 method="POST"
@@ -39,15 +77,8 @@ const Index = ({ data }) => {
                   id={'last-name'}
                   className="block w-full rounded border-lightgrey p-3 px-4 font-body"
                 />
-                <Field name="last-name" label="Last name" />
-                <Field type="email" name="email" label="Email address" />
-                <Field type="select" name="product" label="Enquiry" />
-                <Field type="textarea" name="message" label="Message" />
-
-                <div className="col-span-3 text-center">
-                  <Button type="submit">Submit</Button>
-                </div>
-              </form>
+                
+              </form> */}
             </div>
           </div>
         </Container>
