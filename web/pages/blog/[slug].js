@@ -13,7 +13,7 @@ import Avatar from '../../components/Avatar'
 import Container from '../../components/Container'
 import Image from 'next/image'
 import ptComponents from '../../components/ptComponents'
-import readingTime from 'reading-time'
+// import readingTime from 'reading-time'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -22,7 +22,7 @@ function urlFor(source) {
 const Post = (props) => {
   const { title, bodyRaw = [], slug, mainImage, morePosts } = props
   if (!title || !bodyRaw) return <ErrorComponent />
-  const time = readingTime(JSON.stringify(bodyRaw)).minutes
+  // const time = readingTime(JSON.stringify(bodyRaw)).minutes
   return (
     <Layout navigationBackground="white">
       <Container size="narrow">
@@ -31,8 +31,8 @@ const Post = (props) => {
           <Avatar />
           <span className="px-2">|</span>
           <time className="ml-1">{format(new Date(), 'do MMMM yyyy')}</time>
-          <span className="px-2">|</span>
-          <span>{Math.ceil(time)} mins</span>
+          {/* <span className="px-2">|</span> */}
+          {/* <span>{Math.ceil(time)} mins</span> */}
         </div>
         <Heading>{title}</Heading>
         <div className="mt-4 lg:mt-8">
