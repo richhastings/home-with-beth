@@ -33,7 +33,12 @@ const Index = ({ data }) => {
                 data-netlify="true"
               >
                 <input type="hidden" name="form-name" value="enquiry" />
-                <Field name="first-name" label="First name" />
+                <input
+                  type="text"
+                  name={'first-name'}
+                  id={'last-name'}
+                  className="block w-full rounded border-lightgrey p-3 px-4 font-body"
+                />
                 <Field name="last-name" label="Last name" />
                 <Field type="email" name="email" label="Email address" />
                 <Field type="select" name="product" label="Enquiry" />
