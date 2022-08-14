@@ -86,7 +86,7 @@ const Index = ({ data, about }) => {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: indexPageQuery,

@@ -59,7 +59,7 @@ const Post = (props) => {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: blogPageQuery,
