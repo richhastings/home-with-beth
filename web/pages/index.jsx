@@ -4,19 +4,19 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import Split from '../components/Split'
-import Holding from '../components/Holding'
+import Holding, { launchDate } from '../components/Holding'
 import { indexPageQuery, indexPageQuery2 } from '../data/queries'
 import { PortableText } from '@portabletext/react'
 // import axios from 'axios'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
+import compareAsc from 'date-fns/compareAsc'
 
 const Index = ({ data, about }) => {
   const { allPost, allLockup } = data
 
-  const holding = false
-
-  if (holding) return <Holding />
+  const holding = compareAsc(launchDate(), new Date())
+  if (holding > 0) return <Holding />
 
   return (
     <>
@@ -75,6 +75,10 @@ const Index = ({ data, about }) => {
           ctaText="View all posts"
           ctaUrl="/blog"
         />
+
+        <hr />
+
+        {/* <Testimonials /> */}
         {/* <Insta /> */}
         {/* force deploy!! */}
       </Layout>
