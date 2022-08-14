@@ -59,6 +59,13 @@ const Post = (props) => {
   )
 }
 
+export async function getStaticPaths() {
+  return {
+    paths,
+    fallback: boolean,
+  }
+}
+
 export async function getStaticProps(context) {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
