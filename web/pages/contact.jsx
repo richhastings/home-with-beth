@@ -11,6 +11,7 @@ import { NextSeo } from 'next-seo'
 
 const Index = ({ data }) => {
   const { allLockup } = data
+
   return (
     <>
       <NextSeo title="Home with Beth | Contact" />
@@ -25,13 +26,10 @@ const Index = ({ data }) => {
           <div>
             <div className="mt-12">
               <form
-                action="/thank-you"
-                name="enquiry"
-                method="POST"
                 className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-                data-netlify="true"
+                action="https://formspree.io/f/xbjbjarn"
+                method="POST"
               >
-                <input type="hidden" name="form-name" value="enquiry" />
                 <Field name="firstname" label="First name" />
                 <Field name="last-name" label="Last name" />
                 <Field type="email" name="email" label="Email address" />
