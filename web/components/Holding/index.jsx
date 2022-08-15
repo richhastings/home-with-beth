@@ -1,5 +1,5 @@
 import Countdown, { CountdownRendererFn } from 'react-countdown'
-export const launchDate = () => new Date('2022-08-15T09:00:00')
+export const launchDate = () => new Date('2022-08-15T07:15:00')
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
