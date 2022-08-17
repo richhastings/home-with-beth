@@ -20,7 +20,7 @@ function urlFor(source) {
 }
 
 const Post = (props) => {
-  const { title, bodyRaw = [], slug, mainImage, morePosts } = props
+  const { title, bodyRaw = [], slug, mainImage, morePosts, publishedAt } = props
   if (!title || !bodyRaw) return <ErrorComponent />
   // const time = readingTime(JSON.stringify(bodyRaw)).minutes
   return (
@@ -30,7 +30,9 @@ const Post = (props) => {
           <span>By Beth Hastings</span>
           <Avatar />
           <span className="px-2">|</span>
-          <time className="ml-1">{format(new Date(), 'do MMMM yyyy')}</time>
+          <time className="ml-1">
+            {format(new Date(publishedAt), 'do MMMM yyyy')}
+          </time>
           {/* <span className="px-2">|</span> */}
           {/* <span>{Math.ceil(time)} mins</span> */}
         </div>

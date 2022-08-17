@@ -5,17 +5,6 @@ import { useEffect, useState } from 'react'
 import Heading from '../Heading'
 
 const Hero = ({ title, subtitle, short, imgUrl }) => {
-  const [hasScrolled, setHasScrolled] = useState(false)
-
-  const removeScrollListener = () => {
-    setHasScrolled(true)
-    window.removeEventListener('scroll', removeScrollListener)
-  }
-
-  useEffect(
-    () => window && window.addEventListener('scroll', removeScrollListener)
-  )
-
   return (
     <div
       className={classNames(
@@ -54,13 +43,17 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
           )}
         </div>
       </div>
-      {imgUrl && !hasScrolled && (
-        <div className="absolute bottom-16 left-1/2 translate-x-[-50%] text-white">
+      {imgUrl && (
+        <a
+          href="#content"
+          className="absolute bottom-16 left-1/2 translate-x-[-50%] text-white"
+        >
           <div className="animate-bounce">
             <ArrowDownIcon width={32} />
           </div>
-        </div>
+        </a>
       )}
+      <div id="content" />
     </div>
   )
 }

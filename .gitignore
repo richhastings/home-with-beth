@@ -2,3 +2,5 @@ node_modules
 dist
 .next
 out
+
+/web/.DS_Store

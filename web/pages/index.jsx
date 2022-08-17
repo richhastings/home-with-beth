@@ -76,7 +76,7 @@ const Index = ({ data, about }) => {
           ctaUrl="/blog"
         />
 
-        <hr />
+        {/* <hr /> */}
 
         {/* <Testimonials /> */}
         {/* <Insta /> */}

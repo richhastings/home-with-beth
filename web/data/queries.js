@@ -62,6 +62,7 @@ export const blogPageQuery = gql`
       slug {
         current
       }
+      publishedAt
     }
   }
 `
