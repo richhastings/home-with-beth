@@ -8,7 +8,7 @@ function urlFor(source) {
 
 const getImageDimensions = (ratio) => {
   const sizingMap = {
-    landscape: [1600, 900],
+    landscape: [1600, 1200],
     portrait: [1200, 1600],
     square: [1600, 1600],
   }

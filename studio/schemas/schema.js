@@ -34,6 +34,11 @@ export default createSchema({
     gallery,
     images,
     testimonial,
-    quote
+    quote,
+    {
+      name: 'singleimage',
+      type: 'image',
+      title: 'Image',
+    },
   ]),
 })

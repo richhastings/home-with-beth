@@ -1,7 +1,7 @@
 export default {
   name: 'gallery',
   type: 'object',
-  title: 'Gallery',
+  title: 'Image',
   fields: [
     {name: 'images', title: 'Images', type: 'images'},
     {
