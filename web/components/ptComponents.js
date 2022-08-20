@@ -74,6 +74,18 @@ const ptComponents = {
       ))
     },
   },
+  marks: {
+    link: ({ value, children }) => {
+      const { href, blank } = value
+      return blank ? (
+        <a href={href} target="_blank" rel="noopener">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      )
+    },
+  },
 }
 
 export default ptComponents

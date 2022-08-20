@@ -12,6 +12,7 @@ import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import compareAsc from 'date-fns/compareAsc'
 import QuotesCarousel from '../components/QuotesCarousel'
+import ptComponents from '../components/ptComponents'
 
 const Index = ({ data, about }) => {
   const { allPost, allLockup, allQuote } = data
@@ -45,7 +46,10 @@ const Index = ({ data, about }) => {
             />
           }
         >
-          <PortableText value={about.data.allLockup[0].descriptionRaw} />
+          <PortableText
+            value={about.data.allLockup[0].descriptionRaw}
+            components={ptComponents}
+          />
         </Split>
         <hr />
         <Split
