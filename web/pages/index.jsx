@@ -11,10 +11,10 @@ import { PortableText } from '@portabletext/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import compareAsc from 'date-fns/compareAsc'
+import QuotesCarousel from '../components/QuotesCarousel'
 
 const Index = ({ data, about }) => {
-  const { allPost, allLockup } = data
-
+  const { allPost, allLockup, allQuote } = data
   const holding = compareAsc(launchDate(), new Date())
   if (holding > 0) return <Holding />
 
@@ -76,9 +76,9 @@ const Index = ({ data, about }) => {
           ctaUrl="/blog"
         />
 
-        {/* <hr /> */}
+        <hr />
 
-        {/* <Testimonials /> */}
+        <QuotesCarousel items={allQuote} />
         {/* <Insta /> */}
         {/* force deploy!! */}
       </Layout>

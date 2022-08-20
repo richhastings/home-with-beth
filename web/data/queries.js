@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const indexPageQuery = gql`
-  query indexPageQueryquery($key: StringFilter) {
+  query indexPageQuery($key: StringFilter) {
     allPost(limit: 3, sort: { _createdAt: DESC }) {
       _createdAt
       title
@@ -19,11 +19,17 @@ export const indexPageQuery = gql`
       title
       descriptionRaw
     }
+    allQuote(limit: 3, sort: { _createdAt: DESC }) {
+      _createdAt
+      name
+      location
+      body
+    }
   }
 `
 
 export const indexPageQuery2 = gql`
-  query indexPageQueryquery($key: StringFilter) {
+  query indexPageQuery($key: StringFilter) {
     allLockup(where: { key: $key }) {
       title
       descriptionRaw

@@ -34,3 +34,110 @@ body,
 hr {
   border-color: #aaa;
 }
+
+[class*='flickity-enabled'] {
+  position: relative;
+  width: 100%;
+}
+
+[class*='flickity-enabled']:focus {
+  outline: none;
+}
+
+[class*='flickity-viewport'] {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+[class*='flickity-slider'] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+[class*='flickity-enabled'][class*='is-draggable'] {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+[class*='flickity-enabled'][class*='is-draggable']
+  [class*='flickity-viewport'] {
+  cursor: move;
+  cursor: grab;
+  position: relative;
+}
+
+[class*='flickity-enabled'][class*='is-draggable']
+  [class*='flickity-viewport'][class*='is-pointer-down'] {
+  cursor: grabbing;
+}
+
+[class*='flickity-page-dots'] {
+  @apply space-x-2;
+  text-align: center;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+[class*='flickity-page-dots'] .dot {
+  background: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* not possible to retrieve theme color from newskit config */
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+[class*='flickity-page-dots'] .dot.is-selected {
+  background: #000;
+  display: inline-block;
+}
+[class*='flickity-page-dots'] > :not([hidden]) ~ :not([hidden]) {
+  margin-right: 10px;
+  margin-left: 0;
+}
+[class*='flickity-page-dots'] .dot:last-child {
+  margin-right: 0;
+}
+/* no circle */
+[class*='flickity-button'] {
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+}
+/* big previous & next buttons */
+[class*='flickity-prev-next-button'] {
+  width: 24px;
+  height: 24px;
+}
+[class*='flickity-prev-next-button'].previous {
+  left: 24px;
+}
+[class*='flickity-prev-next-button'].next {
+  right: 24px;
+}
+/* icon color */
+[class*='flickity-button-icon'] {
+  fill: #1d5e6c;
+}
+/* change disabled button colour*/
+[class*='flickity-button']:disabled [class*='flickity-button-icon'] {
+  /* display: none; */
+  fill: #ccc;
+}
+/* default/mobile, 1 cells in group */
+[class*='carousel-cell'] {
+  width: 100%;
+}

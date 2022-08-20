@@ -59,6 +59,16 @@ export default {
     // as a block type.
     {
       type: 'image',
+      fields: [{
+        name: 'ratio',
+        type: 'string',
+        title: 'Aspect Ratio',
+        options: {
+          list: [
+            'landscape', 'portrait', 'square'
+          ],
+        }
+      }],
       options: {hotspot: true},
     },
     {title: 'Gallery', type: 'gallery'}

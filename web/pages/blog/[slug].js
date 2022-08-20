@@ -33,8 +33,6 @@ const Post = (props) => {
           <time className="ml-1">
             {format(new Date(publishedAt), 'do MMMM yyyy')}
           </time>
-          {/* <span className="px-2">|</span> */}
-          {/* <span>{Math.ceil(time)} mins</span> */}
         </div>
         <Heading>{title}</Heading>
         <div className="mt-4 lg:mt-8">
