@@ -23,7 +23,7 @@ export default {
       title: 'Aspect Ratio',
       options: {
         list: [
-          'landscape', 'portrait', 'square'
+          'landscape', 'portrait', 'square', 'widescreen'
         ],
       }
     }

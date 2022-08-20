@@ -11,6 +11,7 @@ const getImageDimensions = (ratio) => {
     landscape: [1600, 1200],
     portrait: [1200, 1600],
     square: [1600, 1600],
+    widescreen: [1600, 900],
   }
 
   return sizingMap[ratio]
@@ -18,27 +19,6 @@ const getImageDimensions = (ratio) => {
 
 const ptComponents = {
   types: {
-    image: ({ value }) => {
-      const dimensions = getImageDimensions(value.ratio)
-      if (!value?.asset?._ref) {
-        return null
-      }
-
-      return (
-        <Image
-          placeholder="blur"
-          blurDataURL={urlFor(value.asset).toString()}
-          src={urlFor(value.asset)
-            .width(dimensions[0])
-            .height(dimensions[1])
-            .toString()}
-          width={dimensions[0]}
-          height={dimensions[1]}
-          alt={value.asset.alt}
-          sizes="(max-width: 900px) calc(100vw - 32px), 832px"
-        />
-      )
-    },
     gallery: ({ value }) => {
       const dimensions = getImageDimensions(value.ratio)
       if (value.display === 'grid') {
@@ -78,10 +58,16 @@ const ptComponents = {
       return value.images.map((image) => (
         <Image
           placeholder="blur"
-          blurDataURL={urlFor(image.asset).width(1600).height(900).toString()}
-          src={urlFor(image.asset).width(1600).height(900).toString()}
-          width={1600}
-          height={900}
+          blurDataURL={urlFor(image.asset)
+            .width(dimensions[0])
+            .height(dimensions[1])
+            .toString()}
+          src={urlFor(image.asset)
+            .width(dimensions[0])
+            .height(dimensions[1])
+            .toString()}
+          width={dimensions[0]}
+          height={dimensions[1]}
           alt={image.asset.alt}
           sizes="(max-width: 900px) calc(100vw - 32px), 832px"
         />
