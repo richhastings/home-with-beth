@@ -13,6 +13,7 @@ import Image from 'next/image'
 import compareAsc from 'date-fns/compareAsc'
 import QuotesCarousel from '../components/QuotesCarousel'
 import ptComponents from '../components/ptComponents'
+import Button from '../components/Button'
 
 const Index = ({ data, about }) => {
   const { allPost, allLockup, allQuote } = data
@@ -83,8 +84,10 @@ const Index = ({ data, about }) => {
         <hr />
 
         <QuotesCarousel items={allQuote} />
+        <div className="text-center">
+          <Button href="/testimonials">View all testimonials</Button>
+        </div>
         {/* <Insta /> */}
-        {/* force deploy!! */}
       </Layout>
     </>
   )

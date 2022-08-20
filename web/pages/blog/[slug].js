@@ -14,6 +14,7 @@ import Container from '../../components/Container'
 import Image from 'next/image'
 import ptComponents from '../../components/ptComponents'
 // import readingTime from 'reading-time'
+import { NextSeo } from 'next-seo'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -24,38 +25,61 @@ const Post = (props) => {
   if (!title || !bodyRaw) return <ErrorComponent />
   // const time = readingTime(JSON.stringify(bodyRaw)).minutes
   return (
-    <Layout navigationBackground="white">
-      <Container size="narrow">
-        <div className="mb-2 font-alt text-lg">
-          <span>By Beth Hastings</span>
-          <Avatar />
-          <span className="px-2">|</span>
-          <time className="ml-1">
-            {format(new Date(publishedAt), 'do MMMM yyyy')}
-          </time>
-        </div>
-        <Heading>{title}</Heading>
-        <div className="mt-4 lg:mt-8">
-          <Image
-            placeholder="blur"
-            blurDataURL={urlFor(mainImage.asset.url)
-              .width(1600)
-              .height(900)
-              .toString()}
-            src={urlFor(mainImage.asset.url).width(1600).height(900).toString()}
-            width={1600}
-            height={900}
-            sizes="(max-width:900px) calc(100vw - 32px), 832px"
-          />
-        </div>
-        <div className="prose !mt-[30px] max-w-none font-body">
-          <PortableText value={bodyRaw} components={ptComponents} />
-        </div>
-      </Container>
-      <Share url={slug.current} />
-      <hr />
-      <Grid title="Latest posts" items={morePosts} />
-    </Layout>
+    <>
+      <NextSeo
+        title={title}
+        openGraph={{
+          url: slug.current,
+          images: [
+            {
+              url: urlFor(mainImage.asset.url)
+                .width(800)
+                .height(600)
+                .toString(),
+              width: 800,
+              height: 600,
+              alt: title,
+              type: 'image/jpeg',
+            },
+          ],
+        }}
+      />
+      <Layout navigationBackground="white">
+        <Container size="narrow">
+          <div className="mb-2 font-alt text-lg">
+            <span>By Beth Hastings</span>
+            <Avatar />
+            <span className="px-2">|</span>
+            <time className="ml-1">
+              {format(new Date(publishedAt), 'do MMMM yyyy')}
+            </time>
+          </div>
+          <Heading>{title}</Heading>
+          <div className="mt-4 lg:mt-8">
+            <Image
+              placeholder="blur"
+              blurDataURL={urlFor(mainImage.asset.url)
+                .width(1600)
+                .height(900)
+                .toString()}
+              src={urlFor(mainImage.asset.url)
+                .width(1600)
+                .height(900)
+                .toString()}
+              width={1600}
+              height={900}
+              sizes="(max-width:900px) calc(100vw - 32px), 832px"
+            />
+          </div>
+          <div className="prose !mt-[30px] max-w-none font-body">
+            <PortableText value={bodyRaw} components={ptComponents} />
+          </div>
+        </Container>
+        <Share url={slug.current} />
+        <hr />
+        <Grid title="Latest posts" items={morePosts} />
+      </Layout>
+    </>
   )
 }
 

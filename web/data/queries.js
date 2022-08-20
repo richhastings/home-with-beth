@@ -39,7 +39,7 @@ export const indexPageQuery2 = gql`
 
 export const blogLandingPageQuery = gql`
   query blogLandingPageQuery {
-    allPost {
+    allPost(sort: { _createdAt: DESC }) {
       title
       slug {
         current
@@ -75,7 +75,7 @@ export const blogPageQuery = gql`
 
 export const allPostsQuery = gql`
   query allPostsQuery {
-    allPost {
+    allPost(sort: { _createdAt: DESC }) {
       slug {
         current
       }
@@ -103,6 +103,16 @@ export const allServicesQuery = gql`
     allLockup(where: { key: $key }) {
       title
       descriptionRaw
+    }
+  }
+`
+
+export const allTestimonialsQuery = gql`
+  query allServiceQuery {
+    allTestimonial(sort: { _createdAt: DESC }) {
+      name
+      location
+      body
     }
   }
 `

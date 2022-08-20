@@ -4,9 +4,9 @@ import Card from '../Card'
 
 const Grid = ({ title, subtitle, items, ctaText, ctaUrl }) => {
   return (
-    <div>
+    <>
       {title && (
-        <div className="mb-4 text-center lg:mb-8">
+        <div className="text-center">
           <Heading>{title}</Heading>
           {subtitle && (
             <p className="mx-auto mt-3 max-w-2xl text-xl">{subtitle}</p>
@@ -19,11 +19,11 @@ const Grid = ({ title, subtitle, items, ctaText, ctaUrl }) => {
         ))}
       </div>
       {ctaText && ctaUrl && (
-        <div className="pt-8 text-center">
+        <div className="text-center">
           <Button href={ctaUrl}>{ctaText}</Button>
         </div>
       )}
-    </div>
+    </>
   )
 }
 
