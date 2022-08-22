@@ -83,7 +83,7 @@ const Post = (props) => {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query({
     query: blogPageQuery,
@@ -98,6 +98,17 @@ export async function getServerSideProps(context) {
     props: { ...data.allPost[0], morePosts: morePosts.data.allPost },
   })
   return { props: { ...documentProps.props } }
+}
+
+export async function getStaticPaths() {
+  const paths = await client.fetch(
+    `*[_type == "post" && defined(slug.current)][].slug.current`
+  )
+
+  return {
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: true,
+  }
 }
 
 export default Post
