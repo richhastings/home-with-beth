@@ -29,7 +29,7 @@ const Index = ({ data, about }) => {
           <Hero
             title="Home with Beth"
             subtitle="​Interior styling and design"
-            imgUrl="/images/hero.jpg"
+            imgUrl="/images/hero.webp"
           />
         }
       >
@@ -38,9 +38,9 @@ const Index = ({ data, about }) => {
           imgComponent={
             <Image
               placeholder="blur"
-              blurDataURL="/images/about.jpg"
-              src="/images/about.jpg"
-              alt="Headshot of Beth and Nina the greyhound"
+              blurDataURL="/images/about.webp"
+              src="/images/about.webp"
+              alt="Beth standing at a front door"
               width={1600}
               height={900}
               sizes="(max-width: 768px) calc(100vw - 32px), (max-width:1280px) calc(50vw - 128px), 574px"
@@ -60,8 +60,8 @@ const Index = ({ data, about }) => {
           imgComponent={
             <Image
               placeholder="blur"
-              blurDataURL="/images/home-services.jpg"
-              src="/images/home-services.jpg"
+              blurDataURL="/images/home-services.webp"
+              src="/images/home-services.webp"
               alt="A curated arrangement of decorative items on a tabletop"
               width={1600}
               height={900}
