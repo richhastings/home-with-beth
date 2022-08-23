@@ -15,14 +15,16 @@ const Index = ({ data }) => {
           return (
             <>
               <div className="w-full">
-                <div className="mx-auto w-full max-w-5xl">
-                  <p className="mb-2 font-alt text-2xl md:text-2xl">{body}</p>
-                  <p className="font-body">
+                <div className="mx-auto w-full max-w-3xl">
+                  <p className="prose mb-2 max-w-none font-body">{body}</p>
+                  <p className="font-alt">
                     {name}, {location}
                   </p>
                 </div>
               </div>
-              {i !== allTestimonial.length - 1 && <hr />}
+              {i !== allTestimonial.length - 1 && (
+                <hr className="mx-auto w-full max-w-3xl" />
+              )}
             </>
           )
         })}

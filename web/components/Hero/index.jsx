@@ -1,10 +1,11 @@
 import { ArrowDownIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import Heading from '../Heading'
 
-const Hero = ({ title, subtitle, short, imgUrl }) => {
+const Hero = ({ title, subtitle, short, imgKey }) => {
+  const imgUrl = `/images/${imgKey}.webp`
+  const mobileImgUrl = `/images/${imgKey}-mobile.webp`
   return (
     <div
       className={classNames(
@@ -14,9 +15,9 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
           : 'h-screen'
       )}
     >
-      {imgUrl && (
+      {imgKey && (
         <div className="relative h-full bg-[#000]">
-          <div className="absolute inset-0  opacity-50">
+          <div className="absolute inset-0 hidden opacity-50 md:block">
             <Image
               placeholder="blur"
               blurDataURL={imgUrl}
@@ -27,26 +28,37 @@ const Hero = ({ title, subtitle, short, imgUrl }) => {
               alt="A beautiful curated home."
             />
           </div>
+          <div className="absolute inset-0 opacity-50 md:hidden">
+            <Image
+              placeholder="blur"
+              blurDataURL={mobileImgUrl}
+              layout="fill"
+              objectFit="cover"
+              sizes="100vw"
+              src={mobileImgUrl}
+              alt="A beautiful curated home."
+            />
+          </div>
         </div>
       )}
       <div
         className={`absolute top-1/2 z-[1] flex w-full -translate-y-1/2 flex-col items-center justify-center ${
-          imgUrl && 'text-white'
+          imgKey && 'text-white'
         }`}
       >
         <div>
-          <Heading size={imgUrl ? 'xl' : 'lg'}>{title}</Heading>
+          <Heading size={imgKey ? 'xl' : 'lg'}>{title}</Heading>
           {subtitle && (
-            <p className="mx-auto mt-6 max-w-lg text-center font-alt text-xl font-bold text-white sm:max-w-3xl sm:text-2xl lg:text-4xl">
+            <p className="mx-auto mt-4 max-w-lg text-center font-alt text-xl font-bold text-white sm:mt-6 sm:max-w-3xl sm:text-2xl lg:text-4xl">
               {subtitle}
             </p>
           )}
         </div>
       </div>
-      {imgUrl && (
+      {imgKey && (
         <a
           href="#content"
-          className="absolute bottom-16 left-1/2 translate-x-[-50%] text-white"
+          className="absolute bottom-32 left-1/2 translate-x-[-50%] text-white"
         >
           <div className="animate-bounce">
             <ArrowDownIcon width={32} />

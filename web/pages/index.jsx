@@ -29,7 +29,7 @@ const Index = ({ data, about }) => {
           <Hero
             title="Home with Beth"
             subtitle="​Interior styling and design"
-            imgUrl="/images/hero.webp"
+            imgKey="hero"
           />
         }
       >
