@@ -1,26 +1,28 @@
-const Field = ({ name, label, type = 'text', handleChange }) => {
+import { Field } from 'formik'
+
+const FieldComponent = ({ name, label, type = 'text' }) => {
   const fieldMap = {
     textarea: (
-      <textarea
+      <Field
+        as="textarea"
         id={name}
         name={name}
         rows={4}
         className="block w-full rounded border-lightgrey p-3 px-4 font-body"
-        onChange={handleChange}
       />
     ),
     select: (
-      <select
+      <Field
+        as="select"
         className="block w-full rounded border-lightgrey p-3 px-4 font-body"
         name={name}
         id={name}
-        onChange={handleChange}
       >
         <option value="Inspire me!">Inspire me!</option>
         <option value="Personal shopping">Personal shopping</option>
         <option value="Interior design">Interior design</option>
-        <option value="I'm not sure">I'm not sure</option>
-      </select>
+        <option value="Something Else">Something Else</option>
+      </Field>
     ),
   }
   return (
@@ -30,12 +32,11 @@ const Field = ({ name, label, type = 'text', handleChange }) => {
       </label>
       <div className="mt-1">
         {fieldMap[type] || (
-          <input
+          <Field
             type="text"
             name={name}
             id={name}
             className="block w-full rounded border-lightgrey p-3 px-4 font-body"
-            onChange={handleChange}
           />
         )}
       </div>
@@ -43,4 +44,4 @@ const Field = ({ name, label, type = 'text', handleChange }) => {
   )
 }
 
-export default Field
+export default FieldComponent
