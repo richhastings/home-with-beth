@@ -56,7 +56,7 @@ const Index = ({ data, about }) => {
         <Split
           heading={allLockup[0].title}
           ctaUrl="/services"
-          ctaText="View all services"
+          ctaText="View all products"
           imgComponent={
             <Image
               placeholder="blur"
