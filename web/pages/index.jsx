@@ -27,7 +27,7 @@ const Index = ({ data, about }) => {
         navigationBackground="transparent"
         hero={
           <Hero
-            title="Home with Beth"
+            title="Home with Rich"
             subtitle="​Interior styling and design"
             imgKey="hero"
           />
@@ -56,7 +56,7 @@ const Index = ({ data, about }) => {
         <Split
           heading={allLockup[0].title}
           ctaUrl="/services"
-          ctaText="View all products"
+          ctaText="View all services"
           imgComponent={
             <Image
               placeholder="blur"
