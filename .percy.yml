@@ -6,7 +6,8 @@ snapshot:
   minHeight: 1024
   percyCSS: ""
 discovery:
-  allowedHostnames: []
+  allowedHostnames:
+    - staging--home-with-beth.netlify.app
   disallowedHostnames: []
   networkIdleTimeout: 100
 upload:
