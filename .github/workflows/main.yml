@@ -14,6 +14,6 @@ jobs:
       with:
         node-version: '14'
     - run: npm install --save-dev @percy/cli
-    - run: npx percy snapshot "https://deploy-preview-${{github.ref_name}}--home-with-beth.netlify.app/"
+    - run: npx percy snapshot "https://deploy-preview-${{github.base_ref}}--home-with-beth.netlify.app/"
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
