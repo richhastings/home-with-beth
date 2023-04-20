@@ -27,7 +27,7 @@ const Index = ({ data, about }) => {
         navigationBackground="transparent"
         hero={
           <Hero
-            title="Home with Richard"
+            title="Home with ddd"
             subtitle="​Interior styling and design"
             imgKey="hero"
           />
