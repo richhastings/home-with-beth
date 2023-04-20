@@ -13,6 +13,6 @@ jobs:
       with:
         node-version: '14'
     - run: npm install --save-dev @percy/cli
-    - run: sed -i 's/%pull_request_id%/${{ github.event.number }}/g' snapshot.yml
+    - run: sed -i 's/%pull_request_id%/${{ github.event.number }}/g' snapshots.yml
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
