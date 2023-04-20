@@ -1,7 +1,9 @@
 on:
   push:
     branches:
+      - master
       - staging
+      - feature/*
 
 jobs:
   build:
