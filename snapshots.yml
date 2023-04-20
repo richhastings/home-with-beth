@@ -1,2 +1,2 @@
 - name: First example
-  url: https://staging--home-with-beth.netlify.app/
+  url: https://deploy-preview-${{github.event.number}}--home-with-beth.netlify.app
