@@ -7,14 +7,12 @@ jobs:
   build:
     name: percy snapshot
     runs-on: ubuntu-latest
-    env:
-      pr_number: {{github.event.number}}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: '14'
     - run: npm install --save-dev @percy/cli
-    - run: npx percy snapshot snapshots.yml
+    - run: PR_NUMBER={{github.event.number}} npx percy snapshot snapshots.yml
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

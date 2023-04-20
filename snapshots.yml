@@ -1,2 +1,2 @@
 - name: First example
-  url: https://deploy-preview-${{env.pr_number}}--home-with-beth.netlify.app
+  url: https://deploy-preview-${{PR_NUMBER}}--home-with-beth.netlify.app
