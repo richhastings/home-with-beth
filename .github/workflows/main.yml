@@ -1,9 +1,7 @@
 on:
-  push:
+  pull_request:
     branches:
       - master
-      - staging
-      - feature/*
 
 jobs:
   build:
@@ -16,6 +14,6 @@ jobs:
       with:
         node-version: '14'
     - run: npm install --save-dev @percy/cli
-    - run: npx percy snapshot snapshots.yml
+    - run: npx percy snapshot "https://deploy-preview-${{github.ref}}--home-with-beth.netlify.app/"
       env:
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
