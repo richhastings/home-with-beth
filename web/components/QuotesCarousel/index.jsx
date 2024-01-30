@@ -26,8 +26,8 @@ const QuotesCarousel = ({ items }) => {
           wrapAround: true,
         }}
       >
-        {items.map((item) => (
-          <Quote {...item} />
+        {items.map((item, i) => (
+          <Quote key={i} {...item} />
         ))}
       </Flickity>
     </>

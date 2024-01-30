@@ -35,8 +35,7 @@
     "react": "^18.1.0",
     "react-countdown": "^2.3.2",
     "react-dom": "^18.1.0",
-    "react-flickity-component": "^3.6.3",
-    "react-netlify-forms": "^1.3.2",
+    "react-flickity-component": "^4.0.7",
     "yup": "^0.32.11"
   },
   "devDependencies": {

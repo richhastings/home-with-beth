@@ -83,8 +83,8 @@ const Navigation = ({ background = 'champagne' }) => {
                 </div>
                 {primaryLinks &&
                   primaryLinks.map((item, i) => (
-                    <div className="text-center">
-                      <Link key={i} href={item.url}>
+                    <div key={i} className="text-center">
+                      <Link href={item.url}>
                         <a
                           className={`block w-full text-center font-body text-white`}
                         >
