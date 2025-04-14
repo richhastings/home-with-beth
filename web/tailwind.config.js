@@ -26,6 +26,7 @@ module.exports = {
     require('@tailwindcss/forms'),
     function ({ addVariant }) {
       addVariant('child', '& > *')
+      addVariant('first-child', '& > *:first-child')
       addVariant('child-hover', '&:hover *')
     },
   ],

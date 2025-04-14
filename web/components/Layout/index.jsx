@@ -1,22 +1,16 @@
 import Navigation from '../Navigation'
 import Footer from '../Footer'
-import Container from '../Container'
-import HypeStrip from '../HypeStrip'
+import { getNavigation } from '../../lib/api'
 
-const Layout = ({ children, navigationBackground, size, hero, noHype }) => (
-  <div className="flex min-h-screen flex-col justify-between">
-    <div>
-      <Navigation background={navigationBackground} />
-      {hero && <div className="mb-8 md:mb-16">{hero}</div>}
-      <Container size={size}>
-        <main className="mb-8 space-y-8 md:mb-16 md:space-y-16">
-          {children}
-        </main>
-      </Container>
-      {!noHype && <HypeStrip />}
-    </div>
-    <Footer />
-  </div>
-)
+const Layout = async ({ children, navigationBackground }) => {
+  const navigationItems = await getNavigation()
+  return (
+    <>
+      <Navigation items={navigationItems} background={navigationBackground} />
+      {children}
+      <Footer />
+    </>
+  )
+}
 
 export default Layout

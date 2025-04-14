@@ -2,12 +2,12 @@ import Heading from '../Heading'
 import Button from '../Button'
 import Card from '../Card'
 
-const Grid = ({ title, subtitle, items, ctaText, ctaUrl }) => {
+const Grid = ({ title, subtitle, items, ctaText, ctaUrl, className }) => {
   return (
-    <>
+    <div className={className}>
       {title && (
         <div className="text-center">
-          <Heading>{title}</Heading>
+          <Heading className="mb-8">{title}</Heading>
           {subtitle && (
             <p className="mx-auto mt-3 max-w-2xl text-xl">{subtitle}</p>
           )}
@@ -19,11 +19,11 @@ const Grid = ({ title, subtitle, items, ctaText, ctaUrl }) => {
         ))}
       </div>
       {ctaText && ctaUrl && (
-        <div className="text-center">
+        <div className="mt-16 text-center">
           <Button href={ctaUrl}>{ctaText}</Button>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

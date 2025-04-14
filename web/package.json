@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/client": "^3.6.4",
+    "@contentful/rich-text-react-renderer": "^15.19.4",
     "@headlessui/react": "^1.6.1",
     "@heroicons/react": "^1.0.6",
     "@portabletext/react": "^1.0.6",
@@ -22,6 +23,7 @@
     "@sanity/image-url": "^1.0.1",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "contentful": "^10.6.21",
     "date-fns": "^2.29.1",
     "flickity": "2.3.0",
     "formik": "^2.2.9",
@@ -29,13 +31,14 @@
     "groq": "^2.29.3",
     "isomorphic-fetch": "^3.0.0",
     "lodash.isequal": "^4.5.0",
-    "next": "^12.1.6",
+    "next": "^14.1.0",
     "next-seo": "^5.5.0",
-    "nodemailer": "^6.8.0",
-    "react": "^18.1.0",
+    "nodemailer": "^6.9.9",
+    "react": "^18.2.0",
     "react-countdown": "^2.3.2",
-    "react-dom": "^18.1.0",
+    "react-dom": "^18.2.0",
     "react-flickity-component": "^4.0.7",
+    "resend": "^3.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
@@ -47,10 +50,10 @@
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.7",
     "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6",
+    "eslint-config-next": "^14.1.0",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.4.1"
   }
 }

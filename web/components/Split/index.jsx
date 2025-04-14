@@ -16,9 +16,13 @@ const Split = ({
           reversed ? `md:col-start-2` : ``
         }`}
       >
-        <Heading>{heading}</Heading>
-        <div className="prose mx-auto my-4 font-body">{children}</div>
-        {ctaUrl && ctaText && <Button href={ctaUrl}>{ctaText}</Button>}
+        <Heading className="mb-4">{heading}</Heading>
+        <div className="prose mx-auto font-body">{children}</div>
+        {ctaUrl && ctaText && (
+          <Button additionalClasses="mt-4" href={ctaUrl}>
+            {ctaText}
+          </Button>
+        )}
       </div>
       {imgComponent && (
         <div className={reversed ? `md:col-start-1 md:row-start-1` : ``}>

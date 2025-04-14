@@ -1,3 +1,5 @@
+'use client'
+
 import { Disclosure } from '@headlessui/react'
 import { HomeIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { primaryLinks } from './links'
@@ -5,7 +7,7 @@ import SocialLinks from '../SocialLinks'
 import Container from '../Container'
 import Link from 'next/link'
 
-const Navigation = ({ background = 'champagne' }) => {
+const Navigation = ({ background = 'champagne', items }) => {
   const backgroundClassMap = {
     transparent: 'absolute z-[1] w-full text-white',
     champagne: 'bg-champagne text-black',
@@ -44,19 +46,17 @@ const Navigation = ({ background = 'champagne' }) => {
                 <div className="hidden sm:block">
                   <div className="flex gap-8 ">
                     <Link href="/">
-                      <a>
-                        <HomeIcon className="block h-6 w-6" />
-                      </a>
+                      <HomeIcon className="block h-6 w-6" />
                     </Link>
-                    {primaryLinks &&
-                      primaryLinks.length > 0 &&
-                      primaryLinks.map((item) => (
-                        <Link key={item.label} href={item.url}>
-                          <a className="text-md block font-body font-bold hover:underline">
-                            {item.label}
-                          </a>
-                        </Link>
-                      ))}
+                    {items.map((item) => (
+                      <Link
+                        className="text-md block font-body font-bold hover:underline"
+                        key={item.label}
+                        href={item.url}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -73,26 +73,22 @@ const Navigation = ({ background = 'champagne' }) => {
             <div className="px-4 py-2 pb-3">
               <div className="space-y-2">
                 <div>
-                  <Link href="/">
-                    <a className="mx-auto block w-full text-center">
-                      <div className="mx-auto w-6">
-                        <HomeIcon className="block h-6 text-white" />
-                      </div>
-                    </a>
+                  <Link className="mx-auto block w-full text-center" href="/">
+                    <div className="mx-auto w-6">
+                      <HomeIcon className="block h-6 text-white" />
+                    </div>
                   </Link>
                 </div>
-                {primaryLinks &&
-                  primaryLinks.map((item, i) => (
-                    <div key={i} className="text-center">
-                      <Link href={item.url}>
-                        <a
-                          className={`block w-full text-center font-body text-white`}
-                        >
-                          {item.label}
-                        </a>
-                      </Link>
-                    </div>
-                  ))}
+                {items.map((item) => (
+                  <div key={item.label} className="text-center">
+                    <Link
+                      className={`block w-full text-center font-body text-white`}
+                      href={item.url}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
           </Disclosure.Panel>

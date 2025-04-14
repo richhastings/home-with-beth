@@ -1,4 +1,4 @@
-const Heading = ({ level = 'h2', size = 'md', children }) => {
+const Heading = ({ level = 'h2', size = 'md', children, className }) => {
   const Element = level
   const sizeMap = {
     sm: 'text-xl sm:text-2xl lg:text-4xl',
@@ -8,7 +8,9 @@ const Heading = ({ level = 'h2', size = 'md', children }) => {
   }
 
   return (
-    <Element className={`font-display ${sizeMap[size]}`}>{children}</Element>
+    <Element className={`font-display ${sizeMap[size]} ${className}`}>
+      {children}
+    </Element>
   )
 }
 
