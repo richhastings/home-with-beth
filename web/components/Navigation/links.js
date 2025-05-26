@@ -4,10 +4,6 @@ export const primaryLinks = [
     url: '/services',
   },
   {
-    label: 'Blog',
-    url: '/blog',
-  },
-  {
     label: 'Testimonials',
     url: '/testimonials',
   },

@@ -12,7 +12,7 @@ function urlFor(source) {
 const Card = ({ title, mainImage, slug, publishedAt }) => {
   // const time = readingTime(JSON.stringify(bodyRaw)).minutes
   return (
-    <Link href={`/blog/${slug.current}`}>
+    <Link legacyBehavior href={`/blog/${slug.current}`}>
       <a className="overflow-hidden rounded-md border border-lightgrey font-body hover:opacity-70">
         <div className="mb-3">
           <Image

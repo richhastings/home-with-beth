@@ -4,10 +4,10 @@ import Link from 'next/link'
 const Button = ({ href, children, additionalClasses, target }) => {
   if (href) {
     return (
-      <Link href={href}>
+      <Link legacyBehavior href={href}>
         <a target={target} className="inline-block">
           <ShadowWrapper>
-            <div className="px-3 pt-1.5 pb-5 font-body">{children}</div>
+            <div className="px-3 pb-5 pt-1.5 font-body">{children}</div>
           </ShadowWrapper>
         </a>
       </Link>
@@ -17,7 +17,7 @@ const Button = ({ href, children, additionalClasses, target }) => {
   return (
     <button className={`inline-block ${additionalClasses}`}>
       <ShadowWrapper>
-        <div className="px-3 pt-1.5 pb-5 font-body">{children}</div>
+        <div className="px-3 pb-5 pt-1.5 font-body">{children}</div>
       </ShadowWrapper>
     </button>
   )

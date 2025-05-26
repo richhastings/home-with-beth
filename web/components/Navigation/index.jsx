@@ -43,7 +43,7 @@ const Navigation = ({ background = 'champagne' }) => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:block">
                   <div className="flex gap-8 ">
-                    <Link href="/">
+                    <Link legacyBehavior href="/">
                       <a>
                         <HomeIcon className="block h-6 w-6" />
                       </a>
@@ -51,7 +51,7 @@ const Navigation = ({ background = 'champagne' }) => {
                     {primaryLinks &&
                       primaryLinks.length > 0 &&
                       primaryLinks.map((item) => (
-                        <Link key={item.label} href={item.url}>
+                        <Link legacyBehavior key={item.label} href={item.url}>
                           <a className="text-md block font-body font-bold hover:underline">
                             {item.label}
                           </a>
@@ -73,7 +73,7 @@ const Navigation = ({ background = 'champagne' }) => {
             <div className="px-4 py-2 pb-3">
               <div className="space-y-2">
                 <div>
-                  <Link href="/">
+                  <Link legacyBehavior href="/">
                     <a className="mx-auto block w-full text-center">
                       <div className="mx-auto w-6">
                         <HomeIcon className="block h-6 text-white" />
@@ -84,7 +84,7 @@ const Navigation = ({ background = 'champagne' }) => {
                 {primaryLinks &&
                   primaryLinks.map((item, i) => (
                     <div key={i} className="text-center">
-                      <Link href={item.url}>
+                      <Link legacyBehavior href={item.url}>
                         <a
                           className={`block w-full text-center font-body text-white`}
                         >
