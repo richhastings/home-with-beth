@@ -2,7 +2,6 @@ import { addApolloState, initializeApollo } from '../data/apollo'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Heading from '../components/Heading'
-import Split from '../components/Split'
 import Container from '../components/Container'
 import Pricing from '../components/Pricing'
 import { allServicesQuery } from '../data/queries'
@@ -13,8 +12,8 @@ const Index = ({ data }) => {
   const { allService, allAdditionalService, allLockup } = data
   return (
     <>
-      <NextSeo title="Home with Beth | Services" />
-      <Layout hero={<Hero short title="Services" />}>
+      <NextSeo title="Home with Beth | About" />
+      <Layout hero={<Hero short title="About" />}>
         <div className="text-center">
           <Container size="narrow">
             <Heading>{allLockup[0].title}</Heading>

@@ -5,3 +5,18 @@ package = "@netlify/plugin-nextjs"
   from = "/studio"
   to = "https://homewithbeth.sanity.studio"
   status = 301
+
+[[redirects]]
+  from = "/blog
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/testimonials
+  to = "/"
+  status = 301

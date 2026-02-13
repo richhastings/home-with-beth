@@ -4,7 +4,6 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Grid from '../components/Grid'
 import Split from '../components/Split'
-import Holding, { launchDate } from '../components/Holding'
 import { indexPageQuery, indexPageQuery2 } from '../data/queries'
 import { PortableText } from '@portabletext/react'
 // import axios from 'axios'
@@ -16,10 +15,7 @@ import ptComponents from '../components/ptComponents'
 import Button from '../components/Button'
 
 const Index = ({ data, about }) => {
-  const { allPost, allLockup, allQuote } = data
-  const holding = compareAsc(launchDate(), new Date())
-  if (holding > 0) return <Holding />
-
+  const { allLockup } = data
   return (
     <>
       <NextSeo title="Home with Beth" />
@@ -28,7 +24,7 @@ const Index = ({ data, about }) => {
         hero={
           <Hero
             title="Home with Beth"
-            subtitle="​Interior styling and design"
+            subtitle="Content creation for home, lifestyle and motherhood"
             imgKey="hero"
           />
         }
@@ -55,8 +51,8 @@ const Index = ({ data, about }) => {
         <hr />
         <Split
           heading={allLockup[0].title}
-          ctaUrl="/services"
-          ctaText="View all services"
+          // ctaUrl="/services"
+          // ctaText="View all services"
           imgComponent={
             <Image
               placeholder="blur"
@@ -71,23 +67,6 @@ const Index = ({ data, about }) => {
         >
           <PortableText value={allLockup[0].descriptionRaw} />
         </Split>
-
-        <hr />
-
-        <Grid
-          title="Latest posts"
-          items={allPost}
-          ctaText="View all posts"
-          ctaUrl="/blog"
-        />
-
-        <hr />
-
-        <QuotesCarousel items={allQuote} />
-        <div className="text-center">
-          <Button href="/testimonials">View all testimonials</Button>
-        </div>
-        {/* <Insta /> */}
       </Layout>
     </>
   )

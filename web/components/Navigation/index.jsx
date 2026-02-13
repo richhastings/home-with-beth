@@ -48,7 +48,7 @@ const Navigation = ({ background = 'champagne' }) => {
                         <HomeIcon className="block h-6 w-6" />
                       </a>
                     </Link>
-                    {primaryLinks &&
+                    {/* {primaryLinks &&
                       primaryLinks.length > 0 &&
                       primaryLinks.map((item) => (
                         <Link legacyBehavior key={item.label} href={item.url}>
@@ -56,7 +56,7 @@ const Navigation = ({ background = 'champagne' }) => {
                             {item.label}
                           </a>
                         </Link>
-                      ))}
+                      ))} */}
                   </div>
                 </div>
               </div>
@@ -65,7 +65,10 @@ const Navigation = ({ background = 'champagne' }) => {
                   open ? 'text-white' : textColorFromBackground(background)
                 } flex gap-8`}
               >
-                <SocialLinks />
+                <a href="/contact" className="text-md block font-body font-bold hover:underline">
+                  Contact
+                          </a>
+                {/* <SocialLinks /> */}
               </div>
             </div>
           </Container>

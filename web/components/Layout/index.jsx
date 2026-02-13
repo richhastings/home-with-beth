@@ -4,8 +4,8 @@ import Container from '../Container'
 import HypeStrip from '../HypeStrip'
 
 const Layout = ({ children, navigationBackground, size, hero, noHype }) => (
-  <div className="flex min-h-screen flex-col justify-between">
-    <div>
+  <div className="flex min-h-screen flex-col">
+    <div className='grow flex flex-col justify-between'>
       <Navigation background={navigationBackground} />
       {hero && <div className="mb-8 md:mb-16">{hero}</div>}
       <Container size={size}>

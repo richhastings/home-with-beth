@@ -20,21 +20,19 @@ const Index = ({ data }) => {
   const [contactFormData, setContactFormData] = useState({
     name: '',
     email: '',
-    product: '',
     message: '',
   })
 
   const ContactFormSchema = Yup.object().shape({
     name: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
-    product: Yup.string().required('Required'),
     message: Yup.string().required('Required'),
   })
 
   return (
     <>
       <NextSeo title="Home with Beth | Contact" />
-      <Layout hero={<Hero title={submitted ? 'Thank you' : 'Contact'} short />}>
+      <Layout noHype hero={<Hero title={submitted ? 'Thank you' : 'Contact'} short />}>
         <Container size="narrow">
           {submitted ? (
             <div className="min-h-[200px] text-center">
@@ -47,10 +45,6 @@ const Index = ({ data }) => {
                 <p>
                   <strong>Email</strong> <br />
                   {contactFormData?.email}
-                </p>
-                <p>
-                  <strong>Product</strong> <br />
-                  {contactFormData?.product}
                 </p>
                 <p>
                   <strong>Message</strong> <br />
@@ -72,7 +66,6 @@ const Index = ({ data }) => {
                     initialValues={{
                       name: '',
                       email: '',
-                      product: 'Inspire me!',
                       message: '',
                     }}
                     validationSchema={ContactFormSchema}
@@ -99,7 +92,6 @@ const Index = ({ data }) => {
                             name="email"
                             label="Email address"
                           />
-                          <Field type="select" name="product" label="Enquiry" />
                           <Field
                             type="textarea"
                             name="message"
