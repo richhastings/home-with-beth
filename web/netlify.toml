@@ -7,16 +7,16 @@ package = "@netlify/plugin-nextjs"
   status = 301
 
 [[redirects]]
-  from = "/blog
+  from = "/blog"
   to = "/"
   status = 301
 
 [[redirects]]
-  from = "/blog/*
+  from = "/blog/*"
   to = "/"
   status = 301
 
 [[redirects]]
-  from = "/testimonials
+  from = "/testimonials"
   to = "/"
   status = 301
