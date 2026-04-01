@@ -32,7 +32,10 @@ const Index = ({ data }) => {
   return (
     <>
       <NextSeo title="Home with Beth | Contact" />
-      <Layout noHype hero={<Hero title={submitted ? 'Thank you' : 'Contact'} short />}>
+      <Layout
+        noHype
+        hero={<Hero title={submitted ? 'Thank you' : 'Get in touch'} short />}
+      >
         <Container size="narrow">
           {submitted ? (
             <div className="min-h-[200px] text-center">
@@ -55,7 +58,7 @@ const Index = ({ data }) => {
           ) : (
             <>
               <div className="text-center">
-                <Heading>{allLockup[0].title}</Heading>
+                {/* <Heading>{allLockup[0].title}</Heading> */}
                 <div className="prose mt-4 max-w-none font-body">
                   <PortableText value={allLockup[0].descriptionRaw} />
                 </div>
@@ -102,7 +105,7 @@ const Index = ({ data }) => {
                         <p className="mb-4 font-body text-[#f00]">
                           {Object.keys(errors).length !== 0 &&
                             `Please fill in the following fields: ${Object.keys(
-                              errors
+                              errors,
                             )}`}
                         </p>
                         <Button>Send Message</Button>

@@ -12,21 +12,15 @@ const Index = ({ data }) => {
   const { allService, allAdditionalService, allLockup } = data
   return (
     <>
-      <NextSeo title="Home with Beth | About" />
-      <Layout hero={<Hero short title="About" />}>
-        <div className="text-center">
-          <Container size="narrow">
-            <Heading>{allLockup[0].title}</Heading>
-            <div className="prose mt-4 max-w-none font-body">
-              <PortableText value={allLockup[0].descriptionRaw} />
-            </div>
-          </Container>
-        </div>
-
-        <Pricing
-          services={allService}
-          additionalServices={allAdditionalService}
-        />
+      <NextSeo title="Home with Beth | Portfolio" />
+      <Layout hero={<Hero short title="Portfolio" />}>
+        <Container size="narrow">
+          <div className="prose mt-4 max-w-none font-body">
+            {/* {JSON.stringify(allLockup[0].descriptionRaw)} */}
+            {/* <PortableText value={allLockup[0].descriptionRaw} /> */}
+            <p>Coming soon...</p>
+          </div>
+        </Container>
       </Layout>
     </>
   )
